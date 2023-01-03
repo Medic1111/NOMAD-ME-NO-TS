@@ -10,7 +10,7 @@
     "seedDBpost": "node server/db/seed.js --seedDB-post",
     "clearDBuser": "node server/db/seed.js --clearDB-user",
     "clearDBpost": "node server/db/seed.js --clearDB-post",
-    "build": "cd client && npm install &7 npm run build",
+    "build": "cd client && npm install && npm run build",
     "dev-client": "cd client && npm start"
   },
   "engines": {
