@@ -1,0 +1,25 @@
+.label,
+.labelSelection {
+  margin-top: 1vh;
+  border: transparent;
+  text-align: center;
+  outline: none;
+  width: 4em;
+  font-size: 1.3em;
+  color: var(--p_dark);
+  height: 2.5em;
+  background-color: var(--bg_accent);
+  cursor: pointer;
+  margin: 2.5vh 0;
+}
+
+.label:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.label:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.labelSelection {
+  background-color: rgb(123, 158, 146);
+}

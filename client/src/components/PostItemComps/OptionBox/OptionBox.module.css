@@ -1,0 +1,11 @@
+.span {
+  color: var(--bg_btn);
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.userOptions {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  gap: 0.75em;
+}

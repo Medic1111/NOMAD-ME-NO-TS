@@ -1,0 +1,24 @@
+.voteBox {
+  gap: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upvoteCount {
+  font-size: 1.4em;
+  color: var(--color_p_dark);
+}
+.upvote,
+.upvoted {
+  font-size: 2.5em;
+  cursor: pointer;
+  color: var(--color_link);
+}
+
+.upvoted {
+  color: rgb(184, 189, 188);
+}
+.upvote:hover {
+  transform: scale(1.2);
+}

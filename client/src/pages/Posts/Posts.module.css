@@ -1,0 +1,18 @@
+.main {
+  width: 100vw;
+  height: auto;
+  position: relative;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 75vh;
+  width: 100vw;
+  overflow-x: scroll;
+  gap: 3em;
+  white-space: "nowrap";
+  padding: 0 1vw;
+}

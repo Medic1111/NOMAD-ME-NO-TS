@@ -1,0 +1,25 @@
+# GET USER WITH POSTS
+
+GET http://localhost:3002/api/v1/users/myaccount111 HTTP/1.1
+Content-Type: application/json
+
+###
+
+# DELETE USER
+
+DELETE http://localhost:3002/api/v1/users/myaccount HTTP/1.1
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudCIsImlhdCI6MTY3MjEwNTU2NCwiZXhwIjoxNjcyMTA5MTY0fQ.Db9_823L9Vx0MKWLQGzqsjTuZRA3gDhhr3HBdhpa1VQ
+
+###
+
+# EDIT USER AVATAR
+
+PATCH http://localhost:3002/api/v1/users/freesoul HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudCIsImlhdCI6MTY3MjEwMDM0MCwiZXhwIjoxNjcyMTAzOTQwfQ.FEjGq7j9yiu5vLr4dJIXOFkJqdcL_KU5sgERbetm2JY
+
+{
+  "avatar": "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
+}
+###

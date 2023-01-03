@@ -1,0 +1,16 @@
+.footer {
+  width: 100%;
+  height: 5vh;
+  background-color: var(--bg);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.small {
+  font-size: 1.3em;
+  letter-spacing: 0.5px;
+  color: var(--color_h_light);
+}

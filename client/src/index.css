@@ -1,0 +1,117 @@
+:root {
+  --bg: #f7f7f7;
+  --bg_accent: rgba(0, 128, 92, 0.324);
+  --bg_btn: rgb(87, 179, 153);
+  --bg_btn_hover: rgba(87, 179, 153, 0.788);
+  --color_btn: rgb(1, 56, 41);
+  --color_h_dark: rgb(8, 71, 53);
+  --color_h_light: rgb(0, 128, 92);
+  --color_p_dark: rgb(1, 56, 41);
+  --color_p_light: #f7f7f7;
+  --color_link: rgb(118, 195, 173);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  min-height: 100vh;
+  width: 100vw;
+  font-size: 52.5%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg);
+}
+
+.btn_standard {
+  border: transparent;
+  border-radius: 10em;
+  background-color: var(--bg_btn);
+  color: var(--color_btn);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+}
+
+.btn_standard:hover {
+  background-color: var(--bg_btn_hover);
+  transition: 0.3s;
+}
+
+.p_feedback {
+  color: rgb(137, 95, 28);
+  letter-spacing: 0.7px;
+  font-size: 1.3em;
+}
+
+.input_standard {
+  border: transparent;
+  border-radius: 2.5vh;
+  outline: none;
+  color: rgb(0, 128, 92);
+  text-align: center;
+}
+
+.label_standard {
+  font-size: 1.7em;
+  letter-spacing: 0.7px;
+  color: rgb(1, 56, 41);
+}
+
+.link_standard {
+  list-style: none;
+  text-decoration: none;
+  font-size: 1.7rem;
+  letter-spacing: 0.7px;
+  cursor: pointer;
+}
+
+.flex_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_col_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+
+  -webkit-box-shadow: none;
+}
+::-webkit-scrollbar-thumb {
+  background: #f7f7f7;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 55.5%;
+  }
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+}

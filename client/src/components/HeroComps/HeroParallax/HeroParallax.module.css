@@ -1,0 +1,15 @@
+.parallax {
+  height: 85vh;
+  width: 100%;
+  background-image: url("../../../assets/hero.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.h1 {
+  font-size: 10em;
+  color: var(--color_h_dark);
+  font-weight: 600;
+  text-align: center;
+}

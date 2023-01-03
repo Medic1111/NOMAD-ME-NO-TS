@@ -1,0 +1,5 @@
+.span {
+  color: var(--bg_btn);
+  font-size: 1.3em;
+  cursor: pointer;
+}

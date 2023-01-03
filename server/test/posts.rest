@@ -1,0 +1,75 @@
+
+# GETS 404 UNHANDLED ROUTE
+GET http://localhost:3002/api/v1/anythingThatDoesntExists HTTP/1.1
+Content-Type: application/json
+
+###
+
+# GETS ALL POSTS
+GET http://localhost:3002/api/v1/posts HTTP/1.1
+Content-Type: application/json
+
+###
+
+
+# CREATE NEW POST
+POST http://localhost:3002/api/v1/posts HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudDExMSIsImlhdCI6MTY3MjI1OTU2MSwiZXhwIjoxNjcyMjYzMTYxfQ.GV6xA-iSft5GdVY6lT9quexJaY6sEHjSUdTY7aFsWsg
+
+{
+  "author": "63aca7e87da80e5bd41fa402",
+  "url":"https://media.istockphoto.com/id/847714996/photo/miami-beach-florida-usa.jpg?s=612x612&w=0&k=20&c=lT0wFzLOav0uoA8-glWpps552IVbHZaXEGtEtMxjVM8=",
+  "title":"TESTING API3",
+  "content":"This is my API Post"
+}
+
+###
+
+# GET SPEC POST
+GET http://localhost:3002/api/v1/posts/63ac7d031ca92cd47916b66e HTTP/1.1
+Content-Type: application/json
+
+###
+
+# DELETE SPEC POST
+DELETE http://localhost:3002/api/v1/posts/63ac9912037f093f3bc794f7 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudDExMSIsImlhdCI6MTY3MjI2NjQxMSwiZXhwIjoxNjcyMjcwMDExfQ.sNo4t8aoClhLbZI4iGExrgEdl8FVkc2bnoFxnnEeNPQ
+
+{
+  "username": "myaccount111"
+}
+###
+
+# EDIT POST
+PATCH http://localhost:3002/api/v1/posts/63ac9912037f093f3bc794f7 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudDExMSIsImlhdCI6MTY3MjI1OTU2MSwiZXhwIjoxNjcyMjYzMTYxfQ.GV6xA-iSft5GdVY6lT9quexJaY6sEHjSUdTY7aFsWsg
+
+{
+  "url":"https://media.istockphoto.com/id/847714996/photo/miami-beach-florida-usa.jpg?s=612x612&w=0&k=20&c=lT0wFzLOav0uoA8-glWpps552IVbHZaXEGtEtMxjVM8=",
+  "title":"Miami Beach",
+  "content":"This is miami beach, a dream come true for bohemians"
+}
+
+
+###
+
+# UPVOTE POST
+PATCH http://localhost:3002/api/v1/posts/63ac7d031ca92cd47916b66e/up_vote HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im15YWNjb3VudDExMSIsImlhdCI6MTY3MjI1OTU2MSwiZXhwIjoxNjcyMjYzMTYxfQ.GV6xA-iSft5GdVY6lT9quexJaY6sEHjSUdTY7aFsWsg
+
+{
+  "username": "myaccount111"
+}
+
+###
+
+# GETS ALL LABEL SPECIFIC POSTS
+GET http://localhost:3002/api/v1/posts?label=blue HTTP/1.1
+Content-Type: application/json
+
+###
+
