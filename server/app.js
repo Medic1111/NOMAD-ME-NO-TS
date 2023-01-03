@@ -23,6 +23,8 @@ cloudinary.config({
   api_secret: `${process.env.CLOUDINARY_SECRET}`,
 });
 // Setting security HTTP Headers
+// Apply all standard methods but this needs
+// config for image reading outta self-src
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,

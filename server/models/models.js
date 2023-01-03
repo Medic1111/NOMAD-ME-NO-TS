@@ -42,13 +42,6 @@ const userSchema = new mongoose.Schema(
       default: new Date().toISOString(),
       select: false,
     },
-    // posts: [
-    //   {
-    //     type: mongoose.Schema.ObjectId,
-    //     ref: "Post",
-    //     default: [],
-    //   },
-    // ],
   },
   {
     toJSON: { virtuals: true },
