@@ -23,7 +23,7 @@ cloudinary.config({
   api_secret: `${process.env.CLOUDINARY_SECRET}`,
 });
 // Setting security HTTP Headers
-// app.use(helmet());
+app.use(helmet());
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
