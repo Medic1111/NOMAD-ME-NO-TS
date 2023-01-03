@@ -25,12 +25,10 @@ cloudinary.config({
 // Setting security HTTP Headers
 // app.use(helmet());
 app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "img-src": ["'self'", "res.cloudinary.com"],
-      },
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "img-src": ["'self'", "https: data:"],
     },
   })
 );
