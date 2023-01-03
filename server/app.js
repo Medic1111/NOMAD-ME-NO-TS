@@ -23,7 +23,17 @@ cloudinary.config({
   api_secret: `${process.env.CLOUDINARY_SECRET}`,
 });
 // Setting security HTTP Headers
-app.use(helmet());
+// app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "img-src": ["'self'", "res.cloudinary.com"],
+      },
+    },
+  })
+);
 // Limiting against brute force
 const limiter = rateLimit({
   max: 300,
