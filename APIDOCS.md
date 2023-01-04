@@ -1,5 +1,20 @@
 # DEV: API DOCS
 
+## Table of contents
+
+- [Packages](#packages)
+- [Error Handling](#error-handling)
+- [Encryption/Token](#encryptiondecryptiontokenvalidation)
+  - [Encryption](#encryption)
+  - [Decryption](#decryption)
+  - [Sign Token](#sign-token)
+  - [Validate](#validate-middleware)
+- [Routes](#routes)
+  - [Posts](#posts)
+  - [Users](#users)
+  - [Auth](#auth)
+  - [Image](#images)
+
 ## Packages:
 
 [Express:](https://expressjs.com/) This is an express server
