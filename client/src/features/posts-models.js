@@ -20,8 +20,14 @@ export const store = {
 };
 
 export const specPostTemplate = {
-  content: "",
+  _id: 0,
   author: { username: "" },
+  url: "",
+  title: "",
+  content: "",
   up_by: [],
+  label: "none",
+  __v: 0,
   voteCount: 0,
+  id: 0,
 };

@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     let url = showLogin ? "/api/v1/auth/login" : "/api/v1/auth/register";
-    const success = await callApi(
+    let success = await callApi(
       "POST",
       url,
       { ...formData, avatar: uploadMgr.url },
