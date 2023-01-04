@@ -13,7 +13,6 @@ import { postCtx } from "../../features/posts-ctx";
 const SpecPost = () => {
   const userMgr = useContext(userCtx);
   const postId = useParams().id;
-  const postMgr = useContext(postCtx);
   const [data, setData] = useState({
     content: "",
     author: { username: "" },
@@ -29,7 +28,7 @@ const SpecPost = () => {
 
   useEffect(() => {
     fetchData();
-  }, [postId, postMgr.voteRefetch]);
+  }, [postId]);
 
   return (
     <main className={`${spec_classes.main} flex_col_center`}>

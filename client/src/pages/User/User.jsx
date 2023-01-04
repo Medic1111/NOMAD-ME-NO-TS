@@ -35,7 +35,7 @@ const User = () => {
           return (
             <React.Suspense fallback={<Spinner />}>
               <PostItemLazy
-                key={`${obj.id}_${index}`}
+                key={`${obj.id}_${index + 1}`}
                 obj={obj}
                 profile={true}
               />

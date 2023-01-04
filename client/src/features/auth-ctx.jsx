@@ -54,6 +54,7 @@ const AuthProvider = ({ children }) => {
 
   const onShowForm = (which) => {
     which === "login" ? setShowLogin(true) : setShowLogin(false);
+    uploadMgr.setUrl("");
     nav("/auth");
   };
 

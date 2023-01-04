@@ -45,7 +45,7 @@ const NewPostForm = () => {
           className={`${classes.input} input_standard`}
           type="text"
           placeholder="Title"
-          maxLength={16}
+          maxLength={26}
           required
         />
         <ReactQuill

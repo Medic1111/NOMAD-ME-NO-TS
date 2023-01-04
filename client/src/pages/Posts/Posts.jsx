@@ -20,12 +20,11 @@ const Posts = () => {
       uiMgr.state.createPost ||
       uiMgr.state.editAvatar ||
       uiMgr.state.editPost
-      // postMgr.voteRefetch
     ) {
       return;
     }
     postMgr.fetchPostApi();
-  }, []);
+  }, [uiMgr.state.createPost, uiMgr.state.editAvatar, uiMgr.state.editPost]);
 
   return (
     <main className={classes.main} onClick={() => uiMgr.setHasInteracted(true)}>

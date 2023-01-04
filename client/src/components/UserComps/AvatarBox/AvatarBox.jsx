@@ -12,6 +12,7 @@ const AvatarBox = ({ username, avatar }) => {
   return (
     <div className={`${classes.avatarBox} flex_center`}>
       <img
+        alt={`profile ${username}`}
         className={
           userMgr.currentUser.user.username === username
             ? classes.userAvatar

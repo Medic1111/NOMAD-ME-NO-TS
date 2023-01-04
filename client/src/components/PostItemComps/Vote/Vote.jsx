@@ -1,20 +1,23 @@
 import React, { useContext } from "react";
 import { postCtx } from "../../../features/posts-ctx";
+import { userCtx } from "../../../features/user-ctx";
 import classes from "./Vote.module.css";
 
 const Vote = ({ obj }) => {
   const postMgr = useContext(postCtx);
+  const userMgr = useContext(userCtx);
 
   return (
     <div className={`${classes.voteBox} flex_center`}>
       <span
         className={
-          postMgr.voteRefetch
+          obj.up_by.find(
+            (el) => el.username !== userMgr.currentUser.user.usename
+          )
             ? `${classes.upvoted} material-symbols-outlined`
             : `${classes.upvote} material-symbols-outlined`
         }
         onClick={() => {
-          postMgr.setVoteRefetch((prev) => !prev);
           postMgr.onUpVote(obj._id);
         }}
       >

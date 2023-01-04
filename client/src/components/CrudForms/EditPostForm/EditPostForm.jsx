@@ -65,7 +65,7 @@ const EditPostForm = () => {
           className={`${classes.input} input_standard`}
           type="text"
           placeholder="Title"
-          maxLength={20}
+          maxLength={26}
           required
         />
         <ReactQuill

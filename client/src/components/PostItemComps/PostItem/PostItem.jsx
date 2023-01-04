@@ -16,6 +16,7 @@ const PostItem = ({ obj, profile }) => {
     <li className={profile ? profile_classes.li : classes.li}>
       {profile || <PostItemBanner obj={obj} />}
       <img
+        alt={`${obj.title}`}
         onClick={() => nav(`/posts/${obj.id}`)}
         className={profile ? profile_classes.img : classes.img}
         src={obj.url}

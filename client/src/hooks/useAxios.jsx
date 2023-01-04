@@ -18,6 +18,13 @@ export const useAxios = () => {
       })
         .then((serverRes) => {
           success = true;
+          if (serverRes.data.length && typeof serverRes.data !== "string") {
+            serverRes.data = serverRes.data.reverse();
+          } else if (serverRes.data.user) {
+            if (serverRes.data.user.posts) {
+              serverRes.data.user.posts = serverRes.data.user.posts.reverse();
+            }
+          }
           setState && setState(serverRes.data);
         })
         .catch((err) => {

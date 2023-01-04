@@ -16,7 +16,7 @@ const PostsProvider = ({ children }) => {
   const [postIdToEdit, setPostIdToEdit] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [labelToDisplay, setLabelToDisplay] = useState("");
-  const [voteRefetch, setVoteRefetch] = useState(false);
+  // const [voteRefetch, setVoteRefetch] = useState(false);
 
   const fetchPostApi = async () =>
     await callApi("GET", "/api/v1/posts", null, setDisplayPosts);
@@ -81,8 +81,8 @@ const PostsProvider = ({ children }) => {
         setIsFiltering,
         labelToDisplay,
         setLabelToDisplay,
-        voteRefetch,
-        setVoteRefetch,
+        // voteRefetch,
+        // setVoteRefetch,
       }}
     >
       {children}
