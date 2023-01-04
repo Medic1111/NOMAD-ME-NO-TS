@@ -12,18 +12,13 @@ import { postCtx } from "../../features/posts-ctx";
 
 const SpecPost = () => {
   const userMgr = useContext(userCtx);
+  const postMgr = useContext(postCtx);
   const postId = useParams().id;
-  const [data, setData] = useState({
-    content: "",
-    author: { username: "" },
-    up_by: [],
-    voteCount: 0,
-  });
 
   const { callApi } = useAxios();
 
   const fetchData = async () => {
-    await callApi("GET", `/api/v1/posts/${postId}`, null, setData);
+    await callApi("GET", `/api/v1/posts/${postId}`, null, postMgr.setSpecPost);
   };
 
   useEffect(() => {
@@ -32,21 +27,27 @@ const SpecPost = () => {
 
   return (
     <main className={`${spec_classes.main} flex_col_center`}>
-      <PostItemBanner obj={data} />
+      <PostItemBanner obj={postMgr.specPost} />
       <img
         style={{ cursor: "default" }}
         className={spec_classes.img}
-        src={data.url}
+        src={postMgr.specPost.url}
       />
       <h4 style={{ cursor: "default" }} className={classes.title}>
-        {data.title}
+        {postMgr.specPost.title}
       </h4>
-      <div className={spec_classes.pContent}>{parse(data.content)}</div>
+      <div className={spec_classes.pContent}>
+        {parse(postMgr.specPost.content)}
+      </div>
       <div className={spec_classes.pOptions}>
-        <MoreLikeThis label={data.label} />
+        <MoreLikeThis label={postMgr.specPost.label} />
         <div className={classes.userOptions}>
-          {data.author.username === userMgr.currentUser.user.username && (
-            <OptionBox username={data.author.username} _id={data._id} />
+          {postMgr.specPost.author.username ===
+            userMgr.currentUser.user.username && (
+            <OptionBox
+              username={postMgr.specPost.author.username}
+              _id={postMgr.specPost._id}
+            />
           )}
         </div>
       </div>

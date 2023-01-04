@@ -34,8 +34,8 @@ const Posts = () => {
       <ul className={classes.ul} onScroll={() => uiMgr.setHasInteracted(true)}>
         {postMgr.displayPosts.map((obj, index) => {
           return (
-            <React.Suspense fallback={<Spinner />}>
-              <PostItemLazy key={`${obj.title}_${index}`} obj={obj} />
+            <React.Suspense key={`${obj.title}${index}`} fallback={<Spinner />}>
+              <PostItemLazy obj={obj} />
             </React.Suspense>
           );
         })}

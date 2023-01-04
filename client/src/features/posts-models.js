@@ -15,4 +15,6 @@ export const store = {
   setLabelToDisplay: () => {},
   voteRefetch: false,
   setVoteRefetch: () => {},
+  specPost: {},
+  setSpecPost: () => {},
 };

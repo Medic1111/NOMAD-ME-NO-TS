@@ -33,12 +33,8 @@ const User = () => {
       <ul className={`${classes.ul} flex_col_center`}>
         {user.user.posts.map((obj, index) => {
           return (
-            <React.Suspense fallback={<Spinner />}>
-              <PostItemLazy
-                key={`${obj.id}_${index + 1}`}
-                obj={obj}
-                profile={true}
-              />
+            <React.Suspense key={`${obj.id}_${index}`} fallback={<Spinner />}>
+              <PostItemLazy obj={obj} profile={true} />
             </React.Suspense>
           );
         })}
