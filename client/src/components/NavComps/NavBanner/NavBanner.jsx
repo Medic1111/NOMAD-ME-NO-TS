@@ -19,15 +19,16 @@ const NavBanner = () => {
       </p>
       <div className={classes.labelBtnBox}>
         {postMgr.isFiltering && <LabelBadge />}
-        <button
-          className={classes.btnCreate}
+        <span
           onClick={() => {
             uiMgr.dispatch({ type: "CREATEPOST" });
             uploadMgr.setUrl("");
           }}
+          className={` material-symbols-outlined`}
+          style={{ cursor: "pointer" }}
         >
-          +
-        </button>
+          add_circle
+        </span>
       </div>
     </aside>
   );

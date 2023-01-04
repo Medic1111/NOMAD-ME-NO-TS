@@ -22,7 +22,6 @@ function App() {
   const { callApi } = useAxios();
 
   const validateCookie = async () => {
-    console.log("VALIDATING");
     let success = await callApi(
       "GET",
       "/api/v1/auth/validate",

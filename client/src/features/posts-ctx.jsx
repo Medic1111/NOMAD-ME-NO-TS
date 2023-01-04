@@ -1,7 +1,7 @@
 import React, { useContext, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { userCtx } from "./user-ctx";
-import { store } from "./posts-models";
+import { specPostTemplate, store } from "./posts-models";
 import { uiCtx } from "./ui-ctx";
 import { useAxios } from "../hooks/useAxios";
 
@@ -16,12 +16,7 @@ const PostsProvider = ({ children }) => {
   const [postIdToEdit, setPostIdToEdit] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [labelToDisplay, setLabelToDisplay] = useState("");
-  const [specPost, setSpecPost] = useState({
-    content: "",
-    author: { username: "" },
-    up_by: [],
-    voteCount: 0,
-  });
+  const [specPost, setSpecPost] = useState(specPostTemplate);
 
   const fetchPostApi = async () =>
     await callApi("GET", "/api/v1/posts", null, setDisplayPosts);
@@ -45,6 +40,7 @@ const PostsProvider = ({ children }) => {
       username: userMgr.currentUser.user.username,
     });
     success && fetchPostApi();
+    await callApi("GET", `/api/v1/posts/${id}`, null, setSpecPost);
   };
 
   const onEditPost = async (id, oldData) => {

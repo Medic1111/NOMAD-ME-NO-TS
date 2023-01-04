@@ -18,3 +18,10 @@ export const store = {
   specPost: {},
   setSpecPost: () => {},
 };
+
+export const specPostTemplate = {
+  content: "",
+  author: { username: "" },
+  up_by: [],
+  voteCount: 0,
+};

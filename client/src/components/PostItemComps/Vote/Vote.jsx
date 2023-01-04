@@ -11,8 +11,8 @@ const Vote = ({ obj }) => {
     <div className={`${classes.voteBox} flex_center`}>
       <span
         className={
-          obj.up_by.find(
-            (el) => el.username !== userMgr.currentUser.user.usename
+          Object.values(obj)[5].find((user) =>
+            user.username.includes(userMgr.currentUser.user.username)
           )
             ? `${classes.upvoted} material-symbols-outlined`
             : `${classes.upvote} material-symbols-outlined`
