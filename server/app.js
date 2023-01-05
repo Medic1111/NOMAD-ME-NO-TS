@@ -23,22 +23,17 @@ cloudinary.config({
   api_secret: `${process.env.CLOUDINARY_SECRET}`,
 });
 // Setting security HTTP Headers
-// Apply all standard methods but this needs
-// config for image reading outta self-src
+
 app.use(helmet.frameguard());
 app.use(helmet.hidePoweredBy());
 app.use(helmet.hsts());
 app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
-// GOOD HERE
-// app.use(helmet.crossOriginEmbedderPolicy());
-// app.use(helmet.crossOriginOpenerPolicy());
-// app.use(helmet.crossOriginResourcePolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.originAgentCluster());
-// app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
+// config for image reading outta self-src
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -62,9 +57,9 @@ app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 app.use(cookieParser());
 // Cross-origin
 app.use(cors({ origin: "*" }));
-// Data sanatization against NOSQL Query Injection
+// Data sanitization against NOSQL Query Injection
 app.use(mongoSanitize());
-// Data sanatization against XSS
+// Data sanitization against XSS
 // PREVENTED FOR NOW SO TEXT EDITOR CAN BE
 // PARSED ON THE CLIENT
 // app.use(xss());
