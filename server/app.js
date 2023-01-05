@@ -32,12 +32,12 @@ app.use(helmet.ieNoOpen());
 app.use(helmet.noSniff());
 // GOOD HERE
 app.use(helmet.crossOriginEmbedderPolicy());
-app.use(helmet.crossOriginOpenerPolicy());
-app.use(helmet.crossOriginResourcePolicy());
+// app.use(helmet.crossOriginOpenerPolicy());
+// app.use(helmet.crossOriginResourcePolicy());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.expectCt());
 app.use(helmet.originAgentCluster());
-app.use(helmet.permittedCrossDomainPolicies());
+// app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(
   helmet.contentSecurityPolicy({
