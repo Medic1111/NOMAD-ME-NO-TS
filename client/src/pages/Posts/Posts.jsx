@@ -3,9 +3,9 @@ import classes from "./Posts.module.css";
 import Modal from "../../components/Modal/Modal";
 import NavBanner from "../../components/NavComps/NavBanner/NavBanner";
 import SwipeAnim from "../../components/SwipeAnim/SwipeAnim";
+import Spinner from "../../components/common/Spinner/Spinner";
 import { uiCtx } from "../../features/ui-ctx";
 import { postCtx } from "../../features/posts-ctx";
-import Spinner from "../../components/common/Spinner/Spinner";
 
 const PostItemLazy = React.lazy(() =>
   import("../../components/PostItemComps/PostItem/PostItem")

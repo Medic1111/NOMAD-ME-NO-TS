@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
 import classes from "./ImgUpload.module.css";
+import React, { useContext } from "react";
 import { uploadCtx } from "../../features/upload-ctx";
 
 const ImgUpload = ({ formTitle }) => {

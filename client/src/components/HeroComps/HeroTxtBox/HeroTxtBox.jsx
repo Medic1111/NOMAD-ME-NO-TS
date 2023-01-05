@@ -1,5 +1,5 @@
-import React from "react";
 import classes from "./HeroTxtBox.module.css";
+import React from "react";
 import { Slide } from "react-awesome-reveal";
 
 const HeroTxtBox = () => {

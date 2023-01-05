@@ -1,6 +1,6 @@
+import classes from "./Portal.module.css";
 import React from "react";
 import { createPortal } from "react-dom";
-import classes from "./Portal.module.css";
 
 const root = document.getElementById("portal");
 

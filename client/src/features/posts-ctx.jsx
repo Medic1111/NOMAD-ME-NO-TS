@@ -1,9 +1,9 @@
 import React, { useContext, useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { userCtx } from "./user-ctx";
-import { specPostTemplate, store } from "./posts-models";
 import { uiCtx } from "./ui-ctx";
 import { useAxios } from "../hooks/useAxios";
+import { specPostTemplate, store } from "./posts-models";
 
 export const postCtx = createContext(store);
 

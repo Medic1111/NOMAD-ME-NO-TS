@@ -1,14 +1,14 @@
 import classes from "../NewPostForm/NewPostForm.module.css";
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
-import { postCtx } from "../../../features/posts-ctx";
-import { uiCtx } from "../../../features/ui-ctx";
-import ReactQuill from "react-quill";
-import ImgUpload from "../../ImgUpload/ImgUpload";
-import { uploadCtx } from "../../../features/upload-ctx";
 import Button from "../../common/Button/Button";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
 import Label from "../../NavComps/Label/Label";
+import ImgUpload from "../../ImgUpload/ImgUpload";
+import axios from "axios";
+import ReactQuill from "react-quill";
+import { uploadCtx } from "../../../features/upload-ctx";
+import { postCtx } from "../../../features/posts-ctx";
+import { uiCtx } from "../../../features/ui-ctx";
 
 const EditPostForm = () => {
   const postMgr = useContext(postCtx);

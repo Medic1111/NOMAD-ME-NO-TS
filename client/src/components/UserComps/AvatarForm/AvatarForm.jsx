@@ -1,11 +1,11 @@
 import classes from "./AvatarForm.module.css";
 import React, { useContext } from "react";
-import { uiCtx } from "../../../features/ui-ctx";
-import { userCtx } from "../../../features/user-ctx";
 import ImgUpload from "../../ImgUpload/ImgUpload";
-import { uploadCtx } from "../../../features/upload-ctx";
 import Button from "../../common/Button/Button";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
+import { uiCtx } from "../../../features/ui-ctx";
+import { userCtx } from "../../../features/user-ctx";
+import { uploadCtx } from "../../../features/upload-ctx";
 
 const AvatarForm = () => {
   const userMgr = useContext(userCtx);

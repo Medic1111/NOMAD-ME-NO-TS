@@ -1,9 +1,9 @@
+import classes from "./NavBanner.module.css";
 import React, { useContext } from "react";
+import LabelBadge from "../LabelBadge/LabelBadge";
 import { postCtx } from "../../../features/posts-ctx";
 import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
-import classes from "./NavBanner.module.css";
-import LabelBadge from "../LabelBadge/LabelBadge";
 import { uploadCtx } from "../../../features/upload-ctx";
 
 const NavBanner = () => {

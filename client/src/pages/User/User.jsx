@@ -1,8 +1,8 @@
 import classes from "./User.module.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import UserBanner from "../../components/UserComps/UserBanner/UserBanner";
 import { useAxios } from "../../hooks/useAxios";
+import UserBanner from "../../components/UserComps/UserBanner/UserBanner";
 import Spinner from "../../components/common/Spinner/Spinner";
 const PostItemLazy = React.lazy(() =>
   import("../../components/PostItemComps/PostItem/PostItem")

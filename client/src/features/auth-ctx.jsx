@@ -1,10 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAxios } from "../hooks/useAxios";
-import { FormDataTemplate } from "./auth-models";
-import { StoreTemplate } from "./auth-models";
 import { uploadCtx } from "./upload-ctx";
 import { userCtx } from "./user-ctx";
+import { FormDataTemplate, StoreTemplate } from "./auth-models";
 
 export const authCtx = createContext(StoreTemplate);
 

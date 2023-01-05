@@ -1,6 +1,6 @@
 import classes from "./AvatarBox.module.css";
-import { userCtx } from "../../../features/user-ctx";
 import { useContext } from "react";
+import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
 

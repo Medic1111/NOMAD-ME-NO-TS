@@ -1,5 +1,5 @@
-import { Navigate } from "react-router-dom";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import { authCtx } from "../../features/auth-ctx";
 
 const ProtectedRoute = ({ children }) => {

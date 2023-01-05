@@ -1,3 +1,4 @@
+import { useContext, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Nav from "./components/NavComps/Nav/Nav";
@@ -7,10 +8,9 @@ import SpecPost from "./pages/SpecPost/SpecPost";
 import User from "./pages/User/User";
 import Auth from "./pages/Auth/Auth";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import { useContext, useEffect } from "react";
-import { uiCtx } from "./features/ui-ctx";
 import Err from "./components/common/Err/ErrHandler";
 import Spinner from "./components/common/Spinner/Spinner";
+import { uiCtx } from "./features/ui-ctx";
 import { userCtx } from "./features/user-ctx";
 import { authCtx } from "./features/auth-ctx";
 import { useAxios } from "./hooks/useAxios";
@@ -39,7 +39,6 @@ function App() {
     <div className="App">
       {uiMgr.isLoading && <Spinner />}
       {uiMgr.isError && <Err />}
-
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />

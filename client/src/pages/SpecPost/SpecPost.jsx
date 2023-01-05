@@ -1,14 +1,14 @@
 import classes from "../../components/PostItemComps/PostItem/PostItem.module.css";
 import spec_classes from "./SpecPost.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import OptionBox from "../../components/PostItemComps/OptionBox/OptionBox";
-import { userCtx } from "../../features/user-ctx";
 import MoreLikeThis from "../../components/PostItemComps/MoreLikeThis/MoreLikeThis";
-import parse from "html-react-parser";
 import PostItemBanner from "../../components/PostItemComps/PostItemBanner/PostItemBanner";
 import { useAxios } from "../../hooks/useAxios";
 import { postCtx } from "../../features/posts-ctx";
+import { userCtx } from "../../features/user-ctx";
+import parse from "html-react-parser";
 
 const SpecPost = () => {
   const userMgr = useContext(userCtx);

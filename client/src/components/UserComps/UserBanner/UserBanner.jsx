@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { uiCtx } from "../../../features/ui-ctx";
 import classes from "./UserBanner.module.css";
+import React, { useContext } from "react";
 import AvatarForm from "../AvatarForm/AvatarForm";
 import AvatarBox from "../AvatarBox/AvatarBox";
+import { uiCtx } from "../../../features/ui-ctx";
 
 const UserBanner = ({ username, avatar, postLength }) => {
   const uiMgr = useContext(uiCtx);

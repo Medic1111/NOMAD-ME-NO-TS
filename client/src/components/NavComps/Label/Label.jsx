@@ -1,5 +1,5 @@
-import React from "react";
 import classes from "./Label.module.css";
+import React from "react";
 
 const rateList = [
   { value: "green", selected: false },

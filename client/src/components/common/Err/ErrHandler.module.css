@@ -4,7 +4,6 @@
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: #f7f7f7;
   gap: 2.5vh;
   z-index: 999999;
   display: flex;
@@ -12,4 +11,34 @@
   justify-content: center;
   align-items: center;
   gap: 2.5vh;
+  background: url("../../../assets/err.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: opacity(80%);
+}
+
+.h5 {
+  font-size: 5em;
+  text-align: center;
+  color: #f7f7f7;
+}
+
+.p {
+  font-size: 3em;
+  max-width: 80%;
+  text-align: center;
+  color: #f7f7f7;
+  font-weight: 600;
+}
+.btn {
+  margin-top: 2.5vh;
+  width: 60%;
+  height: 5vh;
+  font-size: 2.25em;
+  text-transform: lowercase;
+  background-color: #f7f7f7;
+}
+.btn:hover {
+  background-color: #f7f7f7e0;
 }

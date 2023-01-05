@@ -1,15 +1,15 @@
 import classes from "./NewPostForm.module.css";
-import { useState, useContext } from "react";
-import { postCtx } from "../../../features/posts-ctx";
-import { uiCtx } from "../../../features/ui-ctx";
-import Label from "../../NavComps/Label/Label";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useState, useContext } from "react";
+import Label from "../../NavComps/Label/Label";
 import ImgUpload from "../../ImgUpload/ImgUpload";
-import { uploadCtx } from "../../../features/upload-ctx";
 import Button from "../../common/Button/Button";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
+import ReactQuill from "react-quill";
+import { uploadCtx } from "../../../features/upload-ctx";
 import { userCtx } from "../../../features/user-ctx";
+import { postCtx } from "../../../features/posts-ctx";
+import { uiCtx } from "../../../features/ui-ctx";
 
 const NewPostForm = () => {
   const postMgr = useContext(postCtx);

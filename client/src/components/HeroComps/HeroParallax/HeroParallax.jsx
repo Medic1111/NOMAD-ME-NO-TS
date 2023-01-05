@@ -1,5 +1,5 @@
-import { Zoom } from "react-awesome-reveal";
 import classes from "./HeroParallax.module.css";
+import { Zoom } from "react-awesome-reveal";
 const HeroParallax = () => {
   return (
     <div className={`${classes.parallax} flex_center`}>

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
-import { store } from "./upload-models";
 import { useAxios } from "../hooks/useAxios";
+import { store } from "./upload-models";
 
 export const uploadCtx = createContext(store);
 

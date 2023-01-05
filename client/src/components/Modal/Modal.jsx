@@ -1,9 +1,10 @@
-import { useContext } from "react";
 import classes from "./Modal.module.css";
-import { uiCtx } from "../../features/ui-ctx";
+import { useContext } from "react";
 import AvatarForm from "../UserComps/AvatarForm/AvatarForm";
 import NewPostForm from "../CrudForms/NewPostForm/NewPostForm";
 import EditPostForm from "../CrudForms/EditPostForm/EditPostForm";
+import { uiCtx } from "../../features/ui-ctx";
+
 const Modal = () => {
   const uiMgr = useContext(uiCtx);
   return (

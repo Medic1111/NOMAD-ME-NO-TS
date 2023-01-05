@@ -1,7 +1,7 @@
+import classes from "./Vote.module.css";
 import React, { useContext } from "react";
 import { postCtx } from "../../../features/posts-ctx";
 import { userCtx } from "../../../features/user-ctx";
-import classes from "./Vote.module.css";
 
 const Vote = ({ obj }) => {
   const postMgr = useContext(postCtx);

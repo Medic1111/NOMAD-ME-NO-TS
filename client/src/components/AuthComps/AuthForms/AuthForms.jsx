@@ -1,10 +1,10 @@
 import classes from "./AuthForms2.module.css";
 import React, { useContext } from "react";
-import { Slide } from "react-awesome-reveal";
-import { authCtx } from "../../../features/auth-ctx";
 import AuthFeed from "../AuthFeed/AuthFeed";
 import ImgUpload from "../../ImgUpload/ImgUpload";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
+import { Slide } from "react-awesome-reveal";
+import { authCtx } from "../../../features/auth-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
 
 const AuthForms = () => {

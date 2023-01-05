@@ -1,6 +1,6 @@
 import classes from "./HeroBtnBox.module.css";
-import Button from "../../common/Button/Button";
 import { useContext } from "react";
+import Button from "../../common/Button/Button";
 import { authCtx } from "../../../features/auth-ctx";
 
 const HeroBtnBox = () => {

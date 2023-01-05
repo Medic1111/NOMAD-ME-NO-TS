@@ -2,11 +2,11 @@ import classes from "./PostItem.module.css";
 import profile_classes from "../../../pages/User/User.module.css";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { userCtx } from "../../../features/user-ctx";
 import OptionBox from "../OptionBox/OptionBox";
 import MoreLikeThis from "../MoreLikeThis/MoreLikeThis";
-import parse from "html-react-parser";
 import PostItemBanner from "../PostItemBanner/PostItemBanner";
+import parse from "html-react-parser";
+import { userCtx } from "../../../features/user-ctx";
 
 const PostItem = ({ obj, profile }) => {
   const nav = useNavigate();
