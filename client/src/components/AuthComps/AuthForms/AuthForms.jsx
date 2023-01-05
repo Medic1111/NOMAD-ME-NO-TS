@@ -64,7 +64,7 @@ const AuthForms = () => {
           onChange={(e) => authMgr.onInputChange(e)}
           required
         />
-        <AuthFeed />
+        {/* <AuthFeed /> currently not being used, app_error handles it */}
         <InputSubmit
           disabled={uploadMgr.isLoading ? true : false}
           className={`${classes.btn} btn_standard`}

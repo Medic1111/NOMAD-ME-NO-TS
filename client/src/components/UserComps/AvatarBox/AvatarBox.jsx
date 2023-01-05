@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
+import SettingsIcon from "../../SettingsComps/SettingsIcon/SettingsIcon";
 
 const AvatarBox = ({ username, avatar }) => {
   const userMgr = useContext(userCtx);
@@ -10,7 +11,7 @@ const AvatarBox = ({ username, avatar }) => {
   const uploadMgr = useContext(uploadCtx);
 
   return (
-    <div className={`${classes.avatarBox} flex_center`}>
+    <div className={`${classes.avatarBox} flex_col_center`}>
       <img
         alt={`profile ${username}`}
         className={
@@ -26,9 +27,7 @@ const AvatarBox = ({ username, avatar }) => {
         }}
         src={avatar}
       />
-      {userMgr.currentUser.user.username === username && (
-        <span className={`${classes.x} material-symbols-outlined`}>edit</span>
-      )}
+      {userMgr.currentUser.user.username === username && <SettingsIcon />}
     </div>
   );
 };

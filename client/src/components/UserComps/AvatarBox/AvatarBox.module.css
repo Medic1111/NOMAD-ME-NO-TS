@@ -13,12 +13,12 @@
   object-fit: cover;
 }
 
-.x {
+/* .x {
   color: var(--bg_btn);
   font-size: 2em;
-  margin-left: -15px;
-  margin-bottom: -35px;
-}
+  margin-left: 55px;
+  margin-top: -37.5px;
+} */
 
 .userAvatar {
   cursor: pointer;

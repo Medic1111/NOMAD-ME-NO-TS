@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
   const { callApi } = useAxios();
 
   const onInputChange = (e) => {
-    setShowFeedback(false);
+    // setShowFeedback(false);
     const { name, value } = e.target;
     setFormData((prev) => {
       return { ...prev, [name]: value };
@@ -69,10 +69,10 @@ const AuthProvider = ({ children }) => {
         isAuth,
         setIsAuth,
         logoutHandler,
-        showFeedback,
-        setShowFeedback,
-        feedMsg,
-        setFeedMsg,
+        // showFeedback,
+        // setShowFeedback,
+        // feedMsg,
+        // setFeedMsg,
         onSubmit,
         onShowForm,
       }}

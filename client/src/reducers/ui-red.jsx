@@ -3,6 +3,8 @@ export const uiState = {
   createPost: false,
   editPost: false,
   editAvatar: false,
+  editPassword: false,
+  deleteAccount: false,
 };
 
 const uiRed = (state, action) => {
@@ -26,6 +28,20 @@ const uiRed = (state, action) => {
         ...uiState,
         showModal: true,
         editAvatar: true,
+      };
+    }
+    case "DELETEACCOUNT": {
+      return {
+        ...uiState,
+        showModal: true,
+        deleteAccount: true,
+      };
+    }
+    case "EDITPASSWORD": {
+      return {
+        ...uiState,
+        showModal: true,
+        editPassword: true,
       };
     }
     case "CLOSE": {

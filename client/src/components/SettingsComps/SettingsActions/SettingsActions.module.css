@@ -1,0 +1,9 @@
+.actionBox {
+  margin: 2.5vh 0;
+  gap: 1em;
+}
+
+.actionBtn {
+  height: 5vh;
+  width: 20em;
+}

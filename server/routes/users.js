@@ -8,4 +8,8 @@ userRouter
   .patch(validate, userControl.editUserAvatar)
   .delete(validate, userControl.deleteUser);
 
+userRouter
+  .route("/:id/new_password")
+  .patch(validate, userControl.changePassword);
+
 module.exports = userRouter;
