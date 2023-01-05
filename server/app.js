@@ -25,6 +25,11 @@ cloudinary.config({
 // Setting security HTTP Headers
 // Apply all standard methods but this needs
 // config for image reading outta self-src
+app.use(helmet.frameguard());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.hsts());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
