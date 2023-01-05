@@ -23,6 +23,7 @@ const SettingsDelForm = () => {
       `/api/v1/users/${userMgr.currentUser.user.id}`,
       { password }
     );
+    uiMgr.dispatch({ type: "CLOSE" });
     success && authMgr.logoutHandler();
   };
 
