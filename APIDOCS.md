@@ -238,6 +238,11 @@ userRouter
   .get(userControl.getUser)
   .patch(validate, userControl.editUserAvatar)
   .delete(validate, userControl.deleteUser);
+
+userRouter
+  .route("/:id/new_password")
+  .patch(validate, userControl.changePassword);
+
 ```
 
 ### AUTH:
