@@ -2,18 +2,11 @@ const { User } = require("../models/models");
 const handleAsync = require("../utils/handle_async");
 const AppError = require("../utils/app_error");
 const sendEmail = require("../utils/send_email");
-const signToken = require("../utils/sign_token");
 const { welcomeMsg } = require("../assets/welcome");
 const jwt = require("jsonwebtoken");
 
 const registerControl = handleAsync(async (req, res, next) => {
   let user = await User.create(req.body);
-  // let token = signToken(req.body.username);
-  // res.cookie("jwt", token, {
-  //   maxAge: 3600000,
-  //   secure: true,
-  //   httpOnly: true,
-  // });
 
   await sendEmail({
     email: req.body.email,
@@ -42,12 +35,7 @@ const loginControl = handleAsync(async (req, res, next) => {
     return next(new AppError("Incorrect Password or invalid username", 401));
   }
   user.password = null;
-  // let token = signToken(req.body.username);
-  // res.cookie("jwt", token, {
-  //   maxAge: 3600000,
-  //   secure: true,
-  //   httpOnly: true,
-  // });
+
   res.status(201).json({ user, token: "development_only" });
 });
 
