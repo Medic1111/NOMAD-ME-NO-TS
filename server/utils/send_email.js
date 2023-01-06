@@ -21,8 +21,9 @@ const sendEmail = async (options) => {
     from: "paganowebdev@gmail.com",
     to: options.email,
     subject: options.subject,
-    // text: options.message,
+    text: options.message,
     html: options.message,
+    secure: true,
   };
 
   await transporter.sendMail(mailOptions);
