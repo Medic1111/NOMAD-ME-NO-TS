@@ -9,10 +9,10 @@ const sendEmail = async (options) => {
     //   pass: process.env.GMAIL_PASSWORD
     // }
     // service: "SendGrid",
-    secure: false,
-    ignoreTLS: true,
-    logger: true,
-    debug: true,
+    // secure: false,
+    // ignoreTLS: true,
+    // logger: true,
+    // debug: true,
     host: process.env.GRID_HOST,
     port: process.env.GRID_PORT,
     auth: {
