@@ -21,16 +21,18 @@ const registerControl = handleAsync(async (req, res, next) => {
     email: req.body.email,
     subject: "Welcome from Nomad-me!",
     message,
-  }).catch((err) => {
-    console.log(err);
-    return next(
-      new AppError("Could not send email, is it a valid email address?", 400)
-    );
-  });
-
-  await User.findById(user._id).then((user) =>
-    res.status(201).json({ user, token })
-  );
+  })
+    .then(async () => {
+      await User.findById(user._id).then((user) =>
+        res.status(201).json({ user, token })
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+      return next(
+        new AppError("Could not send email, is it a valid email address?", 400)
+      );
+    });
 });
 
 const loginControl = handleAsync(async (req, res, next) => {

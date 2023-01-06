@@ -8,10 +8,10 @@ const sendEmail = async (options) => {
     //   user: process.env.GMAIL_USERNAME,
     //   pass: process.env.GMAIL_PASSWORD
     // }
-    service: "SendGrid",
+    // service: "SendGrid",
     secure: true,
-    // host: process.env.GRID_HOST,
-    // port: process.env.GRID_PORT,
+    host: process.env.GRID_HOST,
+    port: process.env.GRID_PORT,
     auth: {
       user: process.env.GRID_USERNAME,
       pass: process.env.GRID_PASSWORD,
