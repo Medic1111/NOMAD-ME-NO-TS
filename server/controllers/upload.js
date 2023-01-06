@@ -4,7 +4,6 @@ const cloudinary = require("cloudinary");
 const path = require("path");
 
 const uploadControl = handleAsync(async (req, res, next) => {
-  console.log(req.files.image);
   if (!req.files)
     return next(new AppError("No image to upload, select one", 404));
 

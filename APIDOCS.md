@@ -45,6 +45,10 @@
 
 [JSONWEBTOKEN:](https://www.npmjs.com/package/jsonwebtoken) Handles token signing and verification
 
+[NODEMAILER:](https://nodemailer.com/about/)
+
+[SENDGRID:](https://sendgrid.com/solutions/email-api/)
+
 ## ERROR HANDLING:
 
 In `app.js` the last middleware handles errors:
