@@ -22,6 +22,7 @@ const registerControl = handleAsync(async (req, res, next) => {
     subject: "Welcome from Nomad-me!",
     message,
   }).catch((err) => {
+    console.log(err);
     return next(
       new AppError("Could not send email, is it a valid email address?", 400)
     );
