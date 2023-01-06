@@ -20,7 +20,7 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
 ## The Results
 
 - Reduction of additions/deletions from ~130k to ~60k 🥳.
-- Same features plus additional two (label filtering system and file upload)
+- Same features plus additional three (label filtering system, email sending, and file upload)
   - Filtering was part of "extra features" on the original app and unfortunately we were unable to implement it. In this version, the user has the option to add tags to the posts and filter by it.
   - Image upload on the original was handled by Text Editor where the user would first need to upload the image on a third party, get the url, and upload the url. In this version Images get uploaded to the server which then stores in a cloud and stores the url in the DB.
 - Increased security from original keeping it limited to encryption and cookie utilization (no httpOnly), to:
@@ -29,6 +29,7 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
   - Data sanitization against NOSQL Query Injection
   - Preventing params/query polution
   - Encryption and Cookied httpOnly
+- Welcome emails when a user registers (reset password currently in dev)
 
 ## Compromises:
 
@@ -64,6 +65,8 @@ TOKEN_SECRET=TokenSecretOfChoice
 CLOUDINARY_NAME=yourCloudiName
 CLOUDINARY_KEY=YourCloudiKey
 CLOUDINARY_SECRET=yourCloudiSecret
+GRID_USERNAME=sendgridusername
+GRID_PASSWORD=sendgridpassword
 ```
 
 - Run `npm install` at the root to install server dependencies
