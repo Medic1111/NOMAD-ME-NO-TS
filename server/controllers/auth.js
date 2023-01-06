@@ -8,12 +8,12 @@ const jwt = require("jsonwebtoken");
 
 const registerControl = handleAsync(async (req, res, next) => {
   let user = await User.create(req.body);
-  let token = signToken(req.body.username);
-  res.cookie("jwt", token, {
-    maxAge: 3600000,
-    secure: true,
-    httpOnly: true,
-  });
+  // let token = signToken(req.body.username);
+  // res.cookie("jwt", token, {
+  //   maxAge: 3600000,
+  //   secure: true,
+  //   httpOnly: true,
+  // });
 
   await sendEmail({
     email: req.body.email,
@@ -22,13 +22,11 @@ const registerControl = handleAsync(async (req, res, next) => {
   })
     .then(async () => {
       await User.findById(user._id).then((user) =>
-        res.status(201).json({ user, token })
+        res.status(201).json({ user, token: "development_only" })
       );
     })
     .catch((err) => {
-      return next(
-        new AppError("Could not send email, is it a valid email address?", 400)
-      );
+      return next(new AppError("Could not send Welcome email", 400));
     });
 });
 
@@ -44,13 +42,13 @@ const loginControl = handleAsync(async (req, res, next) => {
     return next(new AppError("Incorrect Password or invalid username", 401));
   }
   user.password = null;
-  let token = signToken(req.body.username);
-  res.cookie("jwt", token, {
-    maxAge: 3600000,
-    secure: true,
-    httpOnly: true,
-  });
-  res.status(201).json({ user, token });
+  // let token = signToken(req.body.username);
+  // res.cookie("jwt", token, {
+  //   maxAge: 3600000,
+  //   secure: true,
+  //   httpOnly: true,
+  // });
+  res.status(201).json({ user, token: "development_only" });
 });
 
 const validateControl = handleAsync(async (req, res, next) => {
