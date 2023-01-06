@@ -9,6 +9,7 @@ const sendEmail = async (options) => {
     //   pass: process.env.GMAIL_PASSWORD
     // }
     // service: "SendGrid",
+    secure: true,
     host: process.env.GRID_HOST,
     port: process.env.GRID_PORT,
     auth: {
@@ -23,7 +24,6 @@ const sendEmail = async (options) => {
     subject: options.subject,
     text: options.message,
     html: options.message,
-    secure: true,
   };
 
   await transporter.sendMail(mailOptions);
