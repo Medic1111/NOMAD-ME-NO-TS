@@ -30,3 +30,9 @@
 .btn {
   font-size: 2.5em;
 }
+.preview {
+  border-radius: 999px;
+  width: 2em;
+  height: 2em;
+  object-fit: cover;
+}

@@ -10,7 +10,16 @@ const ImgUpload = ({ formTitle }) => {
       <label className={`${classes.label} label_standard`}>
         {formTitle ? formTitle : null}
         <span className={`${classes.camera} material-symbols-outlined`}>
-          {uploadMgr.url === "" ? "add_a_photo" : "check"}
+          {/* {uploadMgr.url === "" ? "add_a_photo" : "check"} */}
+          {uploadMgr.url === "" ? (
+            "add_a_photo"
+          ) : (
+            <img
+              className={classes.preview}
+              alt="Preview"
+              src={uploadMgr.url}
+            />
+          )}
         </span>
         <input
           value={""}
