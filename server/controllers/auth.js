@@ -1,7 +1,9 @@
 const { User } = require("../models/models");
 const handleAsync = require("../utils/handle_async");
 const AppError = require("../utils/app_error");
+const sendEmail = require("../utils/send_email");
 const signToken = require("../utils/sign_token");
+const { welcomeMsg } = require("../assets/welcome");
 const jwt = require("jsonwebtoken");
 
 const registerControl = handleAsync(async (req, res, next) => {
@@ -12,9 +14,22 @@ const registerControl = handleAsync(async (req, res, next) => {
     secure: true,
     httpOnly: true,
   });
-  await User.findById(user._id).then((user) =>
-    res.status(201).json({ user, token })
-  );
+
+  await sendEmail({
+    email: req.body.email,
+    subject: "Welcome from Nomad-me!",
+    message: welcomeMsg,
+  })
+    .then(async () => {
+      await User.findById(user._id).then((user) =>
+        res.status(201).json({ user, token })
+      );
+    })
+    .catch((err) => {
+      return next(
+        new AppError("Could not send email, is it a valid email address?", 400)
+      );
+    });
 });
 
 const loginControl = handleAsync(async (req, res, next) => {

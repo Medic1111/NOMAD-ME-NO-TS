@@ -14,9 +14,7 @@ const uploadControl = handleAsync(async (req, res, next) => {
   image
     .mv(uploadPath)
     .then(async () => {
-      console.log("Uploaded to server");
       await cloudinary.uploader.upload(uploadPath).then((result) => {
-        console.log(result);
         res.status(200).json(result.url);
       });
     })
