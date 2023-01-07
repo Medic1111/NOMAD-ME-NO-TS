@@ -13,7 +13,11 @@ const PostItemBanner = ({ obj }) => {
         }}
         className={`${classes.avatarBox}`}
       >
-        <img className={classes.avatar} src={obj.author.avatar} />
+        <img
+          alt={obj.title}
+          className={classes.avatar}
+          src={obj.author.avatar}
+        />
         <p className={classes.username}>{obj.author.username}</p>
       </div>
       <Vote obj={obj} />
