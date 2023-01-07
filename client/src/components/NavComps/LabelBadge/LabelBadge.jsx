@@ -1,12 +1,9 @@
 import classes from "./LabelBadge.module.css";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { postCtx } from "../../../features/posts-ctx";
 
 const LabelBadge = () => {
   const postMgr = useContext(postCtx);
-  const nav = useNavigate();
-
   const [content, setContent] = useState("toggle_on");
   const [bgColor, setBgColor] = useState("");
 
@@ -30,6 +27,9 @@ const LabelBadge = () => {
         }
         case "gray": {
           return setBgColor("#596e79");
+        }
+        default: {
+          return setBgColor("#dfd3c3");
         }
       }
     };

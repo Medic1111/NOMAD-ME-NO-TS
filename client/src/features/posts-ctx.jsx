@@ -18,8 +18,14 @@ const PostsProvider = ({ children }) => {
   const [labelToDisplay, setLabelToDisplay] = useState("");
   const [specPost, setSpecPost] = useState(specPostTemplate);
 
-  const fetchPostApi = async () =>
-    await callApi("GET", "/api/v1/posts", null, setDisplayPosts);
+  const fetchPostApi = async (prevent) =>
+    await callApi(
+      "GET",
+      "/api/v1/posts",
+      null,
+      setDisplayPosts,
+      prevent && true //prevents loading spinner if passed
+    );
 
   const onCreateNewPost = async (postData) => {
     let success = await callApi("POST", "/api/v1/posts", postData);
@@ -45,8 +51,14 @@ const PostsProvider = ({ children }) => {
       null,
       true //prevents loading Spinner
     );
-    success && fetchPostApi();
-    await callApi("GET", `/api/v1/posts/${id}`, null, setSpecPost);
+    success && fetchPostApi(true);
+    await callApi(
+      "GET",
+      `/api/v1/posts/${id}`,
+      null,
+      setSpecPost,
+      true /*prevents loading spinner*/
+    );
   };
 
   const onEditPost = async (id, oldData) => {
