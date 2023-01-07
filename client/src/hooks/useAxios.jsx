@@ -7,9 +7,9 @@ export const useAxios = () => {
   const uiMgr = useContext(uiCtx);
 
   const callApi = useCallback(
-    async (method, url, body, setState) => {
+    async (method, url, body, setState, preventLoad) => {
       let success = false;
-      uiMgr.setIsLoading(true);
+      !preventLoad && uiMgr.setIsLoading(true);
 
       await axios({
         method,
