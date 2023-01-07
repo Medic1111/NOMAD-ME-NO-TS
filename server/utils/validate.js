@@ -1,7 +1,7 @@
 const handleAsync = require("./handle_async");
 const jwt = require("jsonwebtoken");
 const AppError = require("./app_error");
-const { User } = require("../models/models");
+const { User } = require("../models/users");
 
 const validate = handleAsync(async (req, res, next) => {
   let token;

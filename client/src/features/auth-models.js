@@ -1,5 +1,5 @@
 export const FormDataTemplate = {
-  email: "testing@testing.com",
+  email: "",
   username: "testing",
   password: "testing",
   avatar: "",
