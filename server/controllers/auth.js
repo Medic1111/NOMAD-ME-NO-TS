@@ -36,7 +36,7 @@ const loginControl = handleAsync(async (req, res, next) => {
   }
   user.password = null;
 
-  res.status(201).json({ user, token: "development_only" });
+  res.status(200).json({ user, token: "development_only" });
 });
 
 const validateControl = handleAsync(async (req, res, next) => {

@@ -11,10 +11,13 @@ export const useAxios = () => {
       let success = false;
       !preventLoad && uiMgr.setIsLoading(true);
 
+      const controller = new AbortController();
+
       await axios({
         method,
         url,
         data: body,
+        signal: controller.signal,
       })
         .then((serverRes) => {
           success = true;
@@ -34,6 +37,7 @@ export const useAxios = () => {
           uiMgr.setIsLoading(false);
         });
 
+      controller.abort();
       return success;
     },
     [uiMgr]
