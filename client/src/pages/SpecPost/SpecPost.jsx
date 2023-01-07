@@ -29,6 +29,7 @@ const SpecPost = () => {
     <main className={`${spec_classes.main} flex_col_center`}>
       <PostItemBanner obj={postMgr.specPost} />
       <img
+        alt={postMgr.specPost.title}
         style={{ cursor: "default" }}
         className={spec_classes.img}
         src={postMgr.specPost.url}

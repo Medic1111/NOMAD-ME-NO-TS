@@ -7,14 +7,17 @@ export const useAxios = () => {
   const uiMgr = useContext(uiCtx);
 
   const callApi = useCallback(
-    async (method, url, body, setState) => {
+    async (method, url, body, setState, preventLoad) => {
       let success = false;
-      uiMgr.setIsLoading(true);
+      !preventLoad && uiMgr.setIsLoading(true);
+
+      const controller = new AbortController();
 
       await axios({
         method,
         url,
         data: body,
+        signal: controller.signal,
       })
         .then((serverRes) => {
           success = true;
@@ -34,6 +37,7 @@ export const useAxios = () => {
           uiMgr.setIsLoading(false);
         });
 
+      controller.abort();
       return success;
     },
     [uiMgr]

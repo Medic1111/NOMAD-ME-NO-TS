@@ -1,4 +1,5 @@
-const { Post, User } = require("../models/models");
+const { User } = require("../models/users");
+const { Post } = require("../models/posts");
 const AppError = require("../utils/app_error");
 const handleAsync = require("../utils/handle_async");
 
@@ -56,7 +57,10 @@ const upvoteSpecPost = handleAsync(async (req, res, next) => {
     update.up_by.push(user._id);
   }
 
-  await update.save().then((newPost) => res.status(200).json(newPost));
+  await update.save().then((newPost) => {
+    newPost.up_by.forEach((user) => (user.change_password_time = null));
+    res.status(200).json(newPost);
+  });
 });
 
 const postsControl = {

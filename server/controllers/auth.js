@@ -1,4 +1,4 @@
-const { User } = require("../models/models");
+const { User } = require("../models/users");
 const handleAsync = require("../utils/handle_async");
 const AppError = require("../utils/app_error");
 const sendEmail = require("../utils/send_email");
@@ -36,7 +36,7 @@ const loginControl = handleAsync(async (req, res, next) => {
   }
   user.password = null;
 
-  res.status(201).json({ user, token: "development_only" });
+  res.status(200).json({ user, token: "development_only" });
 });
 
 const validateControl = handleAsync(async (req, res, next) => {

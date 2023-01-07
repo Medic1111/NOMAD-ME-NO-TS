@@ -1,6 +1,6 @@
 import classes from "./AuthForms2.module.css";
 import React, { useContext } from "react";
-import AuthFeed from "../AuthFeed/AuthFeed";
+// import AuthFeed from "../AuthFeed/AuthFeed";
 import ImgUpload from "../../ImgUpload/ImgUpload";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
 import { Slide } from "react-awesome-reveal";

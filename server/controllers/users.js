@@ -1,4 +1,6 @@
-const { User, Post } = require("../models/models");
+const { User } = require("../models/users");
+const { Post } = require("../models/posts");
+
 const handleAsync = require("../utils/handle_async");
 const AppError = require("../utils/app_error");
 

@@ -13,8 +13,8 @@ const AuthProvider = ({ children }) => {
   const uploadMgr = useContext(uploadCtx);
   const [isAuth, setIsAuth] = useState(false);
   const [showLogin, setShowLogin] = useState(true);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [feedMsg, setFeedMsg] = useState("");
+  // const [showFeedback, setShowFeedback] = useState(false);
+  // const [feedMsg, setFeedMsg] = useState("");
   const [formData, setFormData] = useState(FormDataTemplate);
   const { callApi } = useAxios();
 
@@ -53,6 +53,11 @@ const AuthProvider = ({ children }) => {
 
   const onShowForm = (which) => {
     which === "login" ? setShowLogin(true) : setShowLogin(false);
+    setFormData(
+      !showLogin
+        ? FormDataTemplate
+        : { email: "", username: "", avatar: "", password: "" }
+    );
     uploadMgr.setUrl("");
     nav("/auth");
   };

@@ -8,18 +8,24 @@ import { specPostTemplate, store } from "./posts-models";
 export const postCtx = createContext(store);
 
 const PostsProvider = ({ children }) => {
+  const nav = useNavigate();
+  const { callApi } = useAxios();
   const userMgr = useContext(userCtx);
   const uiMgr = useContext(uiCtx);
-  const { callApi } = useAxios();
-  const nav = useNavigate();
   const [displayPosts, setDisplayPosts] = useState([]);
   const [postIdToEdit, setPostIdToEdit] = useState("");
   const [isFiltering, setIsFiltering] = useState(false);
   const [labelToDisplay, setLabelToDisplay] = useState("");
   const [specPost, setSpecPost] = useState(specPostTemplate);
 
-  const fetchPostApi = async () =>
-    await callApi("GET", "/api/v1/posts", null, setDisplayPosts);
+  const fetchPostApi = async (prevent) =>
+    await callApi(
+      "GET",
+      "/api/v1/posts",
+      null,
+      setDisplayPosts,
+      prevent && true //prevents loading spinner if passed
+    );
 
   const onCreateNewPost = async (postData) => {
     let success = await callApi("POST", "/api/v1/posts", postData);
@@ -36,11 +42,23 @@ const PostsProvider = ({ children }) => {
   };
 
   const onUpVote = async (id) => {
-    let success = await callApi("PATCH", `/api/v1/posts/${id}/up_vote`, {
-      username: userMgr.currentUser.user.username,
-    });
-    success && fetchPostApi();
-    await callApi("GET", `/api/v1/posts/${id}`, null, setSpecPost);
+    let success = await callApi(
+      "PATCH",
+      `/api/v1/posts/${id}/up_vote`,
+      {
+        username: userMgr.currentUser.user.username,
+      },
+      null,
+      true //prevents loading Spinner
+    );
+    success && fetchPostApi(true);
+    await callApi(
+      "GET",
+      `/api/v1/posts/${id}`,
+      null,
+      setSpecPost,
+      true /*prevents loading spinner*/
+    );
   };
 
   const onEditPost = async (id, oldData) => {
@@ -56,7 +74,8 @@ const PostsProvider = ({ children }) => {
       "GET",
       `/api/v1/posts?label=${label}`,
       null,
-      setDisplayPosts
+      setDisplayPosts,
+      true //prevents loading Spinner
     );
     if (success) {
       setIsFiltering(true);

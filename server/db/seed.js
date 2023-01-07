@@ -1,7 +1,9 @@
 const { mockPosts, mockUsers } = require("../db/mock_data");
 const mongoose = require("mongoose");
 require("dotenv").config();
-const { User, Post } = require("../models/models");
+const { User } = require("../models/users");
+const { Post } = require("../models/posts");
+
 
 const connection = async () => {
   mongoose.set("strictQuery", false);
