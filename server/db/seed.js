@@ -4,7 +4,6 @@ require("dotenv").config();
 const { User } = require("../models/users");
 const { Post } = require("../models/posts");
 
-
 const connection = async () => {
   mongoose.set("strictQuery", false);
   await mongoose
