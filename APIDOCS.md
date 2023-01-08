@@ -4,6 +4,12 @@
 
 - [Packages](#packages)
 - [Error Handling](#error-handling)
+  - [Error Class](#error-class)
+  - [Error Controller](#error-controller)
+  - [Operational vs non operation](#operational-vs-non-operational)
+  - [Mongoose Errors](#mongoose-errors)
+  - [Unhandled Rejections](#unhandled-rejections)
+  - [Uncaught Exceptions](#uncaught-exceptions)
 - [Encryption/Token](#encryptiondecryptiontokenvalidation)
   - [Encryption](#encryption)
   - [Decryption](#decryption)
@@ -58,6 +64,8 @@ In `app.js` the last middleware handles errors:
 app.use(errController);
 ```
 
+### Error Class
+
 It uses the class `AppError` found in `utils`:
 
 ```
@@ -75,6 +83,8 @@ class AppError extends Error {
 ```
 
 In `constrollers` directory you can find the `errController`
+
+### Error Controller
 
 ```
 const errController = (err, req, res, next) => {
@@ -107,8 +117,12 @@ module.exports = errController;
 
 ```
 
+### Operational vs Non-Operational
+
 Operational VS Non-Operational errors are displayed differently.
 Note also, that for Cast, Duplicate, and Validation errors related to Mongo, different functions get called:
+
+### Mongoose Errors
 
 ```
 // MONGOOSE ERRORS:
@@ -131,6 +145,34 @@ const handleValidationDB = (err) => {
   return new AppError(message, 422);
 };
 
+```
+
+### Unhandled Rejections:
+
+Always catch the errors. This is to serve as a second layer safety net handler:
+
+```
+// SAFETY NET UNHANDLED REJECTIONS
+// DO NOT RELY: CATCH THE ERRORS
+process.on("unhandledRejection", (err) => {
+  console.log("UNHANDLED REJECTION: ", err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
+```
+
+### Uncaught Exceptions
+
+Always catch the errors. This is to serve as a second layer safety net handler:
+
+```
+// SAFETY NET UNCAUGHT EXCEPTIONS
+// DO NOT RELY: CATCH THE ERRORS
+process.on("uncaughtException", (err) => {
+  console.log("UNCAUGHT EXECEPTION: ", err.name, err.message);
+  process.exit(1);
+});
 ```
 
 ## ENCRYPTION/DECRYPTION/TOKEN/VALIDATION
