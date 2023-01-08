@@ -12,4 +12,7 @@ userRouter
   .route("/:id/new_password")
   .patch(validate, userControl.changePassword);
 
+userRouter.route("/forgot_password").post(userControl.forgotPassword);
+userRouter.route("/reset_password").post(userControl.resetPassword);
+
 module.exports = userRouter;

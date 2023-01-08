@@ -31,3 +31,23 @@ Authorization: {{auth}}
   "avatar": "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
 }
 ###
+
+# FORGOT PASSWORD- Get temp hash
+POST http://localhost:3002/api/v1/users/forgot_password HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "medictansy@gmail.com"
+}
+###
+
+# FORGOT PASSWORD- Verify temp pass and reset password
+POST http://localhost:3002/api/v1/users/reset_password HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "medicmail",
+  "temp_password": "TEMP_PASS50954308",
+  "newPassword": "medicmail"
+}
+###

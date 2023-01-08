@@ -42,6 +42,16 @@ const userSchema = new mongoose.Schema(
       default: new Date().toISOString(),
       select: false,
     },
+    temp_password: {
+      type: String,
+      default: null,
+      select: false,
+    },
+    temp_password_exp: {
+      type: Date,
+      default: new Date().toISOString(),
+      select: false,
+    },
   },
   {
     toJSON: { virtuals: true },
