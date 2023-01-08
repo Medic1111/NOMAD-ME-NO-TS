@@ -15,6 +15,7 @@
   - [Decryption](#decryption)
   - [Sign Token](#sign-token)
   - [Validate](#validate-middleware)
+- [Database seeding](#database-seeding) -[Seed and clear user](#seedclear-user) -[Seed and clear posts](#seedclear-posts)
 - [Routes](#routes)
   - [Posts](#posts)
   - [Users](#users)
@@ -249,6 +250,35 @@ const validate = handleAsync(async (req, res, next) => {
   next();
 
 ```
+
+## DATABASE SEEDING:
+
+You can find `mock_data` file inside `db` directory in the `server`.
+The mock data needs manipulation as follow:
+
+1- The mock User will have a mongoose ObjectId generated after seeded
+
+- Run `npm run seedDBuser`
+- Head to compass and get the user id (string)
+- Back to mock, assign the value of `postid` to the user's id
+- Now posts are ready to be seeded
+- Run `npm run seedDBpost`
+
+### Seed/Clear User
+
+Seed:
+
+- Run `npm run seedDBuser`
+  Clear:
+- Run `npm run clearDBuser`
+
+### Seed/Clear Posts
+
+Seed:
+
+- Run `npm run seedDBpost`
+  Clear:
+- Run `npm run clearDBpost`
 
 ## ROUTES:
 
