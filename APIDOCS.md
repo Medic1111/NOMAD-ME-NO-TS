@@ -45,9 +45,9 @@
 
 [JSONWEBTOKEN:](https://www.npmjs.com/package/jsonwebtoken) Handles token signing and verification
 
-[NODEMAILER:](https://nodemailer.com/about/)
+[NODEMAILER:](https://nodemailer.com/about/) Sends emails to registered users
 
-[SENDGRID:](https://sendgrid.com/solutions/email-api/)
+[SENDGRID:](https://sendgrid.com/solutions/email-api/) Cloud-based SMTP provider
 
 ## ERROR HANDLING:
 
