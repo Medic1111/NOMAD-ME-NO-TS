@@ -1,6 +1,6 @@
 @userid = 63b475c73892400e88382d72
 @token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NzMxMjEwMzcsImV4cCI6MTY3MzEyNDYzN30.SYWTgsXMHURZjT1QRXZHixtaIE4wKA1yqUh0AxNpOQ4
-@auth = Bearer {{token}}
+@auth = Bearer {{token}} 
 @deletableUser= 63b9d2a391fc6adf15c34e33
 @deletablePass= "111111"
 @deletableToken= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjExNDBfdXNlcl90ZXN0IiwiaWF0IjoxNjczMTIyNDY3LCJleHAiOjE2NzMxMjYwNjd9.Xw7MqogT9iNP9YOIm1nltmj9HZuaCVMs4SlmFL5nSB8
@@ -49,5 +49,16 @@ Content-Type: application/json
   "username": "medicmail",
   "temp_password": "TEMP_PASS50954308",
   "newPassword": "medicmail"
+}
+###
+
+# CHANGE PASSWORD
+PATCH  http://localhost:3002/api/v1/users/{{userid}}/new_password HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "currentPassword": "currentPass",
+  "newPassword": "newPass"
 }
 ###

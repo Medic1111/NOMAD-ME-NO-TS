@@ -18,9 +18,27 @@
 - [Database seeding](#database-seeding) -[Seed and clear user](#seedclear-user) -[Seed and clear posts](#seedclear-posts)
 - [Routes](#routes)
   - [Posts](#posts)
+    - [Get all posts](#get-all-posts)
+    - [Create new post](#create-new-post)
+    - [Get spec post](#get-spec-post)
+    - [Delete spec post](#delete-spec-post)
+    - [Edit post](#edit-post)
+    - [Upvote post](#upvote-post)
+    - [Get label spec posts](#get-label-specific-posts)
   - [Users](#users)
+    - [Get user](#get-user)
+    - [Delete user](#delete-user)
+    - [Edit user avatar](#edit-user-avatar)
+    - [Forgot pass- temp hash](#forgot-password-get-temp-hash)
+    - [Forgot pass- reset](#forgot-password-reset)
+    - [Change password](#change-password)
   - [Auth](#auth)
+    - [Registration](#register)
+    - [Login](#login)
+    - [Validate](#validate)
+    - [Logout](#logout)
   - [Image](#images)
+    - [Upload](#upload)
 
 ## Packages:
 
@@ -306,6 +324,102 @@ postsRouter.route("/:id/up_vote").patch(validate, postsControl.upvoteSpecPost);
 
 > Get posts accepts the following query: label. Used to filter posts by label color
 
+#### Get all posts:
+
+```
+# GETS ALL POSTS
+GET http://localhost:3002/api/v1/posts HTTP/1.1
+Content-Type: application/json
+
+###
+```
+
+#### Create new post:
+
+```
+# CREATE NEW POST
+POST http://localhost:3002/api/v1/posts HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "author": {{userId}},
+  "url":"https://media.istockphoto.com/id/847714996/photo/miami-beach-florida-usa.jpg?s=612x612&w=0&k=20&c=lT0wFzLOav0uoA8-glWpps552IVbHZaXEGtEtMxjVM8=",
+  "title":"TESTING API3",
+  "content":"This is my API TEST VAR Post"
+}
+
+###
+```
+
+#### Get spec post:
+
+```
+# GET SPEC POST
+GET http://localhost:3002/api/v1/posts/{{specPost}} HTTP/1.1
+Content-Type: application/json
+
+###
+```
+
+#### Delete spec post:
+
+```
+# DELETE SPEC POST
+DELETE http://localhost:3002/api/v1/posts/{{specPost}} HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "id": {{userId}}
+}
+###
+```
+
+#### Edit Post:
+
+```
+# EDIT POST
+PATCH http://localhost:3002/api/v1/posts/{{specPost}} HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "url":"https://media.istockphoto.com/id/847714996/photo/miami-beach-florida-usa.jpg?s=612x612&w=0&k=20&c=lT0wFzLOav0uoA8-glWpps552IVbHZaXEGtEtMxjVM8=",
+  "title":"New Patch From VAR API",
+  "content":"This is miami beach, a dream come true for bohemians"
+}
+
+###
+```
+
+#### Upvote post:
+
+```
+# UPVOTE POST
+PATCH http://localhost:3002/api/v1/posts/{{specPost}}/up_vote HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "username": {{username}}
+}
+
+###
+```
+
+#### Get label specific posts:
+
+```
+###
+
+# GETS ALL LABEL SPECIFIC POSTS
+GET http://localhost:3002/api/v1/posts?label={{label}} HTTP/1.1
+Content-Type: application/json
+
+###
+```
+
 ### USERS:
 
 ```
@@ -321,6 +435,88 @@ userRouter
 
 ```
 
+#### Get user:
+
+```
+# GET USER WITH POSTS
+GET http://localhost:3002/api/v1/users/{{userid}} HTTP/1.1
+Content-Type: application/json
+
+###
+```
+
+#### Delete user:
+
+```
+# DELETE USER
+DELETE http://localhost:3002/api/v1/users/{{deletableUser}} HTTP/1.1
+Content-Type: application/json
+Authorization: {{deletableAuth}}
+
+{
+  "password": {{deletablePass}}
+}
+###
+```
+
+#### Edit user avatar:
+
+```
+# EDIT USER AVATAR
+PATCH http://localhost:3002/api/v1/users/{{userid}} HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "avatar": "https://st2.depositphotos.com/3143277/8644/i/600/depositphotos_86446164-stock-photo-business-man-in-office.jpg"
+}
+###
+```
+
+#### Forgot password: Get temp hash
+
+```
+# FORGOT PASSWORD- Get temp hash
+POST http://localhost:3002/api/v1/users/forgot_password HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "medictansy@gmail.com"
+}
+###
+```
+
+#### Forgot password: Reset
+
+```
+# FORGOT PASSWORD- Verify temp pass and reset password
+POST http://localhost:3002/api/v1/users/reset_password HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "medicmail",
+  "temp_password": "TEMP_PASS50954308",
+  "newPassword": "medicmail"
+}
+###
+```
+
+#### Change password:
+
+```
+# CHANGE PASSWORD
+PATCH  http://localhost:3002/api/v1/users/{{userid}}/new_password HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+{
+  "currentPassword": "currentPass",
+  "newPassword": "newPass"
+}
+###
+
+```
+
 ### AUTH:
 
 ```
@@ -333,6 +529,68 @@ authRouter.route("/logout").get(authControl.logoutControl);
 authRouter.route("/validate").get(validate, authControl.validateControl);
 ```
 
+#### Register:
+
+```
+# REGISTRATION SUCCESS:
+POST http://localhost:3002/api/v1/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "{{random}}_user_test",
+  "password": "111111",
+  "email": "{{random}}@kdosakd.com"
+}
+
+###
+```
+
+#### Login:
+
+```
+# LOGIN :
+POST http://localhost:3002/api/v1/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "testing",
+  "password": "testing"
+}
+
+###
+```
+
+#### Validate:
+
+```
+# VALIDATE:
+
+GET http://localhost:3002/api/v1/auth/validate HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+###
+```
+
+#### Logout:
+
+```
+# LOGOUT
+
+GET http://localhost:3002/api/v1/auth/logout HTTP/1.1
+Content-Type: application/json
+Authorization: {{auth}}
+
+###
+```
+
 ### IMAGES:
 
 `uploadRouter.route("/").post(uploadControl);`
+
+#### Upload:
+
+```
+POST http://localhost:3002/api/v1/image HTTP/1.1
+Content-Type: application/json
+```
