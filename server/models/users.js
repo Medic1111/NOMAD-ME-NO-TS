@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
     },
     temp_password_exp: {
       type: Date,
-      default: new Date().toISOString(),
+      default: null,
       select: false,
     },
   },

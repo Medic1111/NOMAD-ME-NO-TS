@@ -73,6 +73,8 @@ const forgotPassword = handleAsync(async (req, res, next) => {
 });
 
 const resetPassword = handleAsync(async (req, res, next) => {
+  if (req.body.newPassword !== req.body.newPasswordConfirm)
+    return next(new AppError("Passwords don't match", 400));
   // FIND USER WITH SELECTED FIELDS
   let user = await User.findOne({ username: req.body.username }).select(
     "+temp_password +temp_password_exp"

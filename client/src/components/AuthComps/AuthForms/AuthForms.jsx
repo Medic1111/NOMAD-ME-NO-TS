@@ -6,6 +6,7 @@ import InputSubmit from "../../common/InputSubmit/InputSubmit";
 import { Slide } from "react-awesome-reveal";
 import { authCtx } from "../../../features/auth-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
+import { Link } from "react-router-dom";
 
 const AuthForms = () => {
   const authMgr = useContext(authCtx);
@@ -70,6 +71,11 @@ const AuthForms = () => {
           className={`${classes.btn} btn_standard`}
           text={authMgr.showLogin ? "Login" : "Sign Up"}
         />
+        {authMgr.showLogin && (
+          <Link className={classes.link} to={"/auth/password_reset"}>
+            Forgot password?
+          </Link>
+        )}
       </form>
     </Slide>
   );
