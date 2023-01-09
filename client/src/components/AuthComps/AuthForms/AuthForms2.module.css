@@ -29,6 +29,13 @@
   letter-spacing: 0.9px;
 }
 
+.link {
+  text-decoration: none;
+  margin-top: 2vh;
+  color: var(--color_h_dark);
+  font-size: 1.3em;
+}
+
 @media (min-width: 640px) {
   .form {
     width: 90%;

@@ -14,6 +14,7 @@ import { uiCtx } from "./features/ui-ctx";
 import { userCtx } from "./features/user-ctx";
 import { authCtx } from "./features/auth-ctx";
 import { useAxios } from "./hooks/useAxios";
+import PassReset from "./pages/PassReset/PassReset";
 
 function App() {
   const uiMgr = useContext(uiCtx);
@@ -67,6 +68,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/auth/password_reset" element={<PassReset />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
