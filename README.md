@@ -2,7 +2,7 @@
 
 A travel style social media application contained to remain a non-toxic environment, with light-hearted feedback on user's activities. Refactored version of a Travel Social Media App developed during Chingu.io 6-week program. The original was built in a team of 4 with PERN stack. This personal version on MERN stack.
 
-[API-DEV-DOCS](./APIDOCS.md)
+[DEV-API-DOCS](./APIDOCS.md)
 
 [LIVE MVP DEV HERE](https://nomad-me-v3.onrender.com/)
 
@@ -20,16 +20,17 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
 ## The Results
 
 - Reduction of additions/deletions from ~130k to ~60k 🥳.
-- Same features plus additional three (label filtering system, email sending, and file upload)
+- Same features plus additional four (label filtering system, email sending, password reset, and file upload)
   - Filtering was part of "extra features" on the original app and unfortunately we were unable to implement it. In this version, the user has the option to add tags to the posts and filter by it.
   - Image upload on the original was handled by Text Editor where the user would first need to upload the image on a third party, get the url, and upload the url. In this version Images get uploaded to the server which then stores in a cloud and stores the url in the DB.
+  - Welcome emails when a user registers
+  - "Forgot password" functionality
 - Increased security from original keeping it limited to encryption and cookie utilization (no httpOnly), to:
   - Secured HTTP Headers
   - Rate limit against Brute force attacks
   - Data sanitization against NOSQL Query Injection
   - Preventing params/query polution
-  - Encryption and Cookied httpOnly
-- Welcome emails when a user registers (reset password currently in dev)
+  - Encryption and Cookies httpOnly
 
 ## Compromises:
 
@@ -50,8 +51,6 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
 
 - Skelleton templates for heavy loads
 - Testing
-- Forgot Password feature
-- Email for registration confirmation
 
 ## Running it
 
