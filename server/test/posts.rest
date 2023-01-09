@@ -59,7 +59,6 @@ Authorization: {{auth}}
   "content":"This is miami beach, a dream come true for bohemians"
 }
 
-
 ###
 
 # UPVOTE POST
