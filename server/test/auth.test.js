@@ -1,6 +1,7 @@
 const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app");
+const { User } = require("../models/users");
 jest.setTimeout(20000);
 
 beforeAll(async () => {
@@ -8,6 +9,10 @@ beforeAll(async () => {
   await mongoose
     .connect(process.env.DB_URI, { useNewUrlParser: true })
     .then(() => console.log("DB CONNECTED"))
+    .catch((err) => console.log(err));
+
+  await User.findOneAndDelete({ username: "jestuser" })
+    .then(() => console.log("deleted"))
     .catch((err) => console.log(err));
 });
 
@@ -98,7 +103,7 @@ describe("Testing AUTH route /login for ", () => {
 // REGISTRATION
 describe("Testing AUTH route /login for ", () => {
   // SUCCESS REGISTRATION
-  test("Successful registration", async () => {
+  test.only("Successful registration", async () => {
     const data = {
       username: "jestuser",
       password: "jestuser",
