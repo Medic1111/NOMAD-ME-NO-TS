@@ -32,7 +32,7 @@ const loginControl = handleAsync(async (req, res, next) => {
     .select("+password");
 
   if (!user || !(await user.decrypt(req.body.password, user.password))) {
-    return next(new AppError("Incorrect Password or invalid username", 401));
+    return next(new AppError("Incorrect Password or invalid username", 422));
   }
   user.password = null;
 
