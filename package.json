@@ -11,7 +11,8 @@
     "clearDBuser": "node server/db/seed.js --clearDB-user",
     "clearDBpost": "node server/db/seed.js --clearDB-post",
     "build": "cd client && npm install && npm run build",
-    "dev-client": "cd client && npm start"
+    "dev-client": "cd client && npm start",
+    "test": "jest --watchAll --detectOpenHandles"
   },
   "engines": {
     "node": "18.2.0"
