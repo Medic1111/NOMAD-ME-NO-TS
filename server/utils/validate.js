@@ -18,6 +18,8 @@ const validate = handleAsync(async (req, res, next) => {
   if (!token) return next(new AppError("No token provided", 403));
 
   jwt.verify(token, process.env.TOKEN_SECRET, async (err, tokenSpec) => {
+    if (!tokenSpec || !tokenSpec.username)
+      return next(new AppError("No credentials for this action", 403));
     username = tokenSpec.username;
     tokenTimeStamp = tokenSpec.iat;
     if (err) return next(new AppError("Invalid or expired token", 403));
