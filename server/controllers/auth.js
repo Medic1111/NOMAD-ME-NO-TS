@@ -40,7 +40,7 @@ const loginControl = handleAsync(async (req, res, next) => {
 });
 
 const validateControl = handleAsync(async (req, res, next) => {
-  let token = req.cookies.jwt;
+  let token = req.cookies.jwt || req.headers.authorization.slice(7);
 
   jwt.verify(token, process.env.TOKEN_SECRET, async (err, tokenSpec) => {
     username = tokenSpec.username;

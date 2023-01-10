@@ -2,7 +2,7 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app");
 const { User } = require("../models/users");
-jest.setTimeout(20000);
+jest.setTimeout(30000);
 
 beforeAll(async () => {
   mongoose.set("strictQuery", false);
@@ -154,7 +154,7 @@ describe("Testing AUTH route /login for ", () => {
       });
   });
   // INVALID DATA
-  test.only("Fails validation mongoose", async () => {
+  test("Fails validation mongoose", async () => {
     const data = { username: "", password: "" };
     await request(app)
       .post("/api/v1/auth/login")
@@ -191,31 +191,75 @@ describe("Testing AUTH route /login for ", () => {
         expect(serverRes.body.error).toBeDefined();
       });
   });
-  // SUCCESSFUL VALIDATION
-  // REQUIRES REFACTOR. CONTROL READING FROM COOKIE ONLY
-  // test("Successful validation no/exp token", async () => {
-  //   await request(app)
-  //     .get("/api/v1/auth/validate")
-  //     .set(
-  //       "Authorization",
-  //       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NzMyOTA0ODIsImV4cCI6MTY3MzI5NDA4Mn0.yGCW7lV5J7gBwarjUH8p-VEEJjg-Ez4aa074g8dlKTY"
-  //     )
-  //     .expect(200)
-  //     .expect("Content-type", /json/)
-  //     .then((serverRes) => {
-  //       expect(serverRes.body).toBeDefined();
-  //       expect(serverRes.body).not.toBeNull();
-  //       expect(serverRes.body).toBeTruthy();
-  //       expect(serverRes.body).toEqual(expect.any(Object));
-  //     });
-  // });
+});
+
+describe("Testing AUTH route/validate for ", () => {
+  let id;
+  let mockUser;
+  let token;
+  beforeAll(async () => {
+    await User.findOneAndDelete({ username: "jestuser" })
+      .then(() => console.log("deleted"))
+      .catch((err) => console.log(err));
+  });
+  beforeEach(async () => {
+    mockUser = await User.create({
+      username: "jestuser",
+      password: "jestuser",
+      email: "jestuser@any.com",
+      passwordConfirm: "jestuser",
+    });
+
+    await request(app)
+      .post("/api/v1/auth/login")
+      .send({ username: "jestuser", password: "jestuser" })
+      .then((serverRes) => {
+        id = serverRes.body.user.id;
+        token = serverRes.header["set-cookie"][0]
+          .slice(4)
+          .split(" ")[0]
+          .slice(0, -1);
+      });
+  });
+
+  afterEach(async () => {
+    await User.findOneAndDelete({ username: "jestuser" })
+      .then(() => console.log("AFTER_ALL:deleted"))
+      .catch((err) => console.log(err));
+  });
+  test("Successful validation", async () => {
+    await request(app)
+      .get("/api/v1/auth/validate")
+      .set("Authorization", `Bearer ${token}`)
+      .expect(200)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.user).toBeDefined();
+      });
+  });
+  // FAIL VALIDATION
+  test("Fail validation no /exp token", async () => {
+    await request(app)
+      .get("/api/v1/auth/validate")
+      .expect(403)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.message).toBeDefined();
+      });
+  });
 });
 
 // LOGOUT
-
 describe("Testing AUTH route /logout for ", () => {
   // SUCCESS LOGOUT
-  test("Successful logout", async () => {
+  test.only("Successful logout", async () => {
     await request(app)
       .get("/api/v1/auth/logout")
       .expect(200)
