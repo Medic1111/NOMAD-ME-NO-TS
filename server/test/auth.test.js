@@ -10,7 +10,9 @@ beforeAll(async () => {
     .connect(process.env.DB_URI, { useNewUrlParser: true })
     .then(() => console.log("DB CONNECTED"))
     .catch((err) => console.log(err));
+});
 
+afterAll(async () => {
   await User.findOneAndDelete({ username: "jestuser" })
     .then(() => console.log("deleted"))
     .catch((err) => console.log(err));
