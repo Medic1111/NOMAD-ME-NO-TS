@@ -5,10 +5,6 @@ const { User } = require("../models/users");
 const { Post } = require("../models/posts");
 jest.setTimeout(20000);
 
-// EDIT POST 200
-// EDIT POST 404
-// EDIT POST 422
-// EDIT POST 401
 // UPVOTE POST 200
 // UPVOTE POST 401
 // UPVOTE POST 404
@@ -30,7 +26,6 @@ beforeAll(async () => {
 });
 
 // POSTS
-
 describe("Testing POST route / for ", () => {
   let mockUser;
   let token;
@@ -150,7 +145,6 @@ describe("Testing POST route / for ", () => {
 });
 
 // POST/:ID
-
 describe("Testing POST route /:id  for ", () => {
   let mockUser;
   let token;
@@ -214,7 +208,7 @@ describe("Testing POST route /:id  for ", () => {
       });
   });
   // FAIL GET SPEC POST NULL
-  test.only("Successful get spec post", async () => {
+  test("Fail get spec post with null for non existing", async () => {
     await request(app)
       .get(`/api/v1/posts/63b9ce69a5199f6be9de8a8c`)
       .expect(200)
@@ -226,7 +220,7 @@ describe("Testing POST route /:id  for ", () => {
   });
 });
 
-describe("Test DELETE route for /:id for ", () => {
+describe("Test POST route DELETE /:id for ", () => {
   let mockUser;
   let token;
   let postIdDel;
@@ -324,6 +318,136 @@ describe("Test DELETE route for /:id for ", () => {
       .set("Accept", "application/json")
       .send(data)
       .expect(403)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.message).toBeDefined();
+      });
+  });
+});
+
+describe("Test POST route PATCH /:id for", () => {
+  let mockUser;
+  let token;
+  let postIdDel;
+  let id;
+  beforeEach(async () => {
+    mockUser = await User.create({
+      username: "jestuser",
+      password: "jestuser",
+      email: "jestuser@any.com",
+      passwordConfirm: "jestuser",
+    });
+
+    await request(app)
+      .post("/api/v1/auth/login")
+      .send({ username: "jestuser", password: "jestuser" })
+      .then((serverRes) => {
+        id = serverRes.body.user.id;
+        token = serverRes.header["set-cookie"][0]
+          .slice(4)
+          .split(" ")[0]
+          .slice(0, -1);
+      });
+    const data = {
+      author: id,
+      url: "https://media.istockphoto.com/id/847714996/photo/miami-beach-florida-usa.jpg?s=612x612&w=0&k=20&c=lT0wFzLOav0uoA8-glWpps552IVbHZaXEGtEtMxjVM8=",
+      title: "TESTING API3",
+      content: "This is my API TEST VAR Post",
+    };
+    await request(app)
+      .post("/api/v1/posts")
+      .set("Authorization", `Bearer ${token}`)
+      .set("Accept", "application/json")
+      .send(data)
+      .expect(201)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        postIdDel = serverRes.body.id;
+      });
+  });
+
+  afterEach(async () => {
+    await User.findOneAndDelete({ username: "jestuser" })
+      .then(() => console.log("AFTER_ALL:deleted"))
+      .catch((err) => console.log(err));
+    await Post.findByIdAndDelete(postIdDel)
+      .then(() => console.log("Post deleted"))
+      .catch((err) => console.log(err));
+  });
+
+  // SUCCESS EDIT
+  test("Successful edit of a spec post", async () => {
+    let data = { title: "new title" };
+    await request(app)
+      .patch(`/api/v1/posts/${postIdDel}`)
+      .set("Authorization", `Bearer ${token}`)
+      .set("Accept", "application/json")
+      .send(data)
+      .expect(200)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.title).toEqual(data.title);
+      });
+  });
+
+  // FAIL 404
+  test("Fails editting a non existent post", async () => {
+    let data = { title: "new title" };
+    await request(app)
+      .patch(`/api/v1/posts/63b9ce69a5199f6be9de8a8d`)
+      .set("Authorization", `Bearer ${token}`)
+      .set("Accept", "application/json")
+      .send(data)
+      .expect(404)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.message).toBeDefined();
+      });
+  });
+
+  // FAIL 403
+  test("Fails editting a post with invalid token", async () => {
+    let data = { title: "new title" };
+    await request(app)
+      .patch(`/api/v1/posts/${postIdDel}`)
+      .set(
+        "Authorization",
+        `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RpbmciLCJpYXQiOjE2NzMxMjEwMzcsImV4cCI6MTY3MzEyNDYzN30.SYWTgsXMHURZjT1QRXZHixtaIE4wKA1yqUh0AxNpOQ4`
+      )
+      .set("Accept", "application/json")
+      .send(data)
+      .expect(403)
+      .expect("Content-type", /json/)
+      .then((serverRes) => {
+        expect(serverRes.body).toBeDefined();
+        expect(serverRes.body).not.toBeNull();
+        expect(serverRes.body).toBeTruthy();
+        expect(serverRes.body).toEqual(expect.any(Object));
+        expect(serverRes.body.message).toBeDefined();
+      });
+  });
+
+  // FAIL 422
+  test.only("Fails editting a post with invalid token", async () => {
+    let data = { title: 1 };
+    await request(app)
+      .patch(`/api/v1/posts/${postIdDel}`)
+      .set("Authorization", `Bearer ${token}`)
+      .set("Accept", "application/json")
+      .send(data)
+      .expect(422)
       .expect("Content-type", /json/)
       .then((serverRes) => {
         expect(serverRes.body).toBeDefined();
