@@ -101,7 +101,6 @@ describe("Testing USER route for /:id DELETE user", () => {
       .expect(200)
       .expect("Content-type", /json/)
       .then((serverRes) => {
-        console.log(serverRes.body);
         expect(serverRes.body).toBeDefined();
         expect(serverRes.body).not.toBeNull();
         expect(serverRes.body).toBeTruthy();
@@ -218,7 +217,6 @@ describe("Testing USER route for /:id/new_password PATCH avatar", () => {
       .expect(200)
       .expect("Content-type", /json/)
       .then((serverRes) => {
-        console.log(serverRes.body);
         expect(serverRes.body).toBeDefined();
         expect(serverRes.body).not.toBeNull();
         expect(serverRes.body).toBeTruthy();
@@ -240,7 +238,6 @@ describe("Testing USER route for /:id/new_password PATCH avatar", () => {
       .expect(401)
       .expect("Content-type", /json/)
       .then((serverRes) => {
-        console.log(serverRes.body);
         expect(serverRes.body).toBeDefined();
         expect(serverRes.body).not.toBeNull();
         expect(serverRes.body).toBeTruthy();
@@ -297,7 +294,6 @@ describe("Testing USER route for /forgot_password POST", () => {
       .expect(200)
       .expect("Content-type", /json/)
       .then((serverRes) => {
-        console.log(serverRes.body);
         expect(serverRes.body).toBeDefined();
         expect(serverRes.body).not.toBeNull();
         expect(serverRes.body).toBeTruthy();
