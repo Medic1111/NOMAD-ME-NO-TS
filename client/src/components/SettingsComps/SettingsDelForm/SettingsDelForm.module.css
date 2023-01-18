@@ -8,11 +8,12 @@
   font-size: 3em;
   text-transform: uppercase;
   max-width: 80%;
+  text-align: center;
 }
 .input,
 .cancel,
 .submit {
-  width: 65%;
+  width: 80%;
   text-align: center;
   height: 5vh;
   padding: 0.5em 0.25em;
