@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const id = mongoose.Types.ObjectId();
 
 // FILL THIS WITH USER ID:
-const postid = "fill this with user id from compass";
+const postid = "63daa01a2a60c8b9403ae2cf";
 
 const mockPosts = [
   {

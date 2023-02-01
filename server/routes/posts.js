@@ -11,6 +11,10 @@ postsRouter
   .get(postsControl.getSpecPost)
   .delete(validate, postsControl.deleteSpecPost)
   .patch(validate, postsControl.editSpecPost);
+postsRouter
+  .route("/:id/comment")
+  .post(validate, postsControl.commentPost)
+  .patch(validate, postsControl.removePost);
 postsRouter.route("/:id/up_vote").patch(validate, postsControl.upvoteSpecPost);
 
 module.exports = postsRouter;

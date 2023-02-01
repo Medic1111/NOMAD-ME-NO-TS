@@ -31,7 +31,25 @@ const postSchema = new mongoose.Schema(
       },
     ],
     label: { type: String, default: "none" },
+    comments: [
+      {
+        content: {
+          type: String,
+          trim: true,
+          required: [true, "A Comment must have an image"],
+        },
+        by: {
+          type: mongoose.Schema.ObjectId,
+          ref: "User",
+        },
+        date: {
+          type: Date,
+          default: new Date().toISOString(),
+        },
+      },
+    ],
   },
+
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },

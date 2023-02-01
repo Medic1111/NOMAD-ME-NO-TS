@@ -9,6 +9,7 @@ import { useAxios } from "../../hooks/useAxios";
 import { postCtx } from "../../features/posts-ctx";
 import { userCtx } from "../../features/user-ctx";
 import parse from "html-react-parser";
+import Comments from "../../components/CommentsComps/Comments/Comments";
 
 const SpecPost = () => {
   const userMgr = useContext(userCtx);
@@ -26,33 +27,36 @@ const SpecPost = () => {
   }, [postId]);
 
   return (
-    <main className={`${spec_classes.main} flex_col_center`}>
-      <PostItemBanner obj={postMgr.specPost} />
-      <img
-        alt={postMgr.specPost.title}
-        style={{ cursor: "default" }}
-        className={spec_classes.img}
-        src={postMgr.specPost.url}
-      />
-      <h4 style={{ cursor: "default" }} className={classes.title}>
-        {postMgr.specPost.title}
-      </h4>
-      <div className={spec_classes.pContent}>
-        {parse(postMgr.specPost.content)}
-      </div>
-      <div className={spec_classes.pOptions}>
-        <MoreLikeThis label={postMgr.specPost.label} />
-        <div className={classes.userOptions}>
-          {postMgr.specPost.author.username ===
-            userMgr.currentUser.user.username && (
-            <OptionBox
-              username={postMgr.specPost.author.username}
-              _id={postMgr.specPost._id}
-            />
-          )}
+    <div className={spec_classes.wrapper}>
+      <main className={`${spec_classes.main} flex_col_center`}>
+        <PostItemBanner obj={postMgr.specPost} />
+        <img
+          alt={postMgr.specPost.title}
+          style={{ cursor: "default" }}
+          className={spec_classes.img}
+          src={postMgr.specPost.url}
+        />
+        <h4 style={{ cursor: "default" }} className={classes.title}>
+          {postMgr.specPost.title}
+        </h4>
+        <div className={spec_classes.pContent}>
+          {parse(postMgr.specPost.content)}
         </div>
-      </div>
-    </main>
+        <div className={spec_classes.pOptions}>
+          <MoreLikeThis label={postMgr.specPost.label} />
+          <div className={classes.userOptions}>
+            {postMgr.specPost.author.username ===
+              userMgr.currentUser.user.username && (
+              <OptionBox
+                username={postMgr.specPost.author.username}
+                _id={postMgr.specPost._id}
+              />
+            )}
+          </div>
+        </div>
+      </main>
+      <Comments specPost={postMgr.specPost} setSpecPost={postMgr.setSpecPost} />
+    </div>
   );
 };
 

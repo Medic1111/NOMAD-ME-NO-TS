@@ -1,0 +1,59 @@
+.avatar {
+  width: 5em;
+  height: 5em;
+  border-radius: 2.5em;
+  object-fit: cover;
+}
+.userBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  width: 20%;
+  padding: 0 1em;
+  padding: 1em;
+}
+.txtBox {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 2em;
+}
+.content {
+  width: 90%;
+  height: auto;
+  font-size: 1.6em;
+  padding: 1em 0.25em;
+  color: var(--color_h_dark);
+}
+
+.username {
+  font-size: 1.3em;
+  letter-spacing: 0.3px;
+  color: var(--color_p_dark);
+}
+
+.li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: auto;
+  background-color: rgba(5, 47, 33, 0.024);
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .txtBox {
+    width: 70%;
+  }
+  .content {
+    padding-top: 1.5em;
+  }
+}
