@@ -36,7 +36,9 @@ const postSchema = new mongoose.Schema(
         content: {
           type: String,
           trim: true,
-          required: [true, "A Comment must have an image"],
+          required: [true, "A Comment must have content"],
+          maxLength: [2600, "Max title chars: 2600"],
+          minLength: [1, "A post must have some content"],
         },
         by: {
           type: mongoose.Schema.ObjectId,
