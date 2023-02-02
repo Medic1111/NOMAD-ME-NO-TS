@@ -53,7 +53,10 @@
   .txtBox {
     width: 70%;
   }
-  .content {
+  /* .content {
     padding-top: 1.5em;
+  } */
+  .userBox {
+    flex-direction: column;
   }
 }
