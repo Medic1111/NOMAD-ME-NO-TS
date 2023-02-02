@@ -20,11 +20,12 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
 ## The Results
 
 - Reduction of additions/deletions from ~130k to ~60k 🥳.
-- Same features plus additional four (label filtering system, email sending, password reset, and file upload)
+- Same features plus additional five (label filtering system, email sending, password reset, comments, and file upload)
   - Filtering was part of "extra features" on the original app and unfortunately we were unable to implement it. In this version, the user has the option to add tags to the posts and filter by it.
   - Image upload on the original was handled by Text Editor where the user would first need to upload the image on a third party, get the url, and upload the url. In this version Images get uploaded to the server which then stores in a cloud and stores the url in the DB.
   - Welcome emails when a user registers
   - "Forgot password" functionality
+  - Comments allowed on posts is not featured on the original. In this version, ability to comment is integrated.
 - Increased security from original keeping it limited to encryption and cookie utilization (no httpOnly), to:
   - Secured HTTP Headers
   - Rate limit against Brute force attacks
