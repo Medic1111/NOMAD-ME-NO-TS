@@ -10,7 +10,22 @@ const getAllPosts = handleAsync(async (req, res, next) => {
     return await Post.find({ label: req.query.label }).then((posts) =>
       res.status(200).json(posts)
     );
-  await Post.find().then((posts) => res.status(200).json(posts));
+  // TESTING PAGINATION
+  const page = req.query.page * 1 || 1;
+  const limit = req.query.limit * 1 || 10;
+  const skip = (page - 1) * limit;
+
+  // PAGE OVER
+  if (req.query.page) {
+    const numberOfProducts = await Post.countDocuments();
+    if (skip >= numberOfProducts)
+      return next(new AppError("This page does not exits", 404));
+  }
+
+  await Post.find()
+    .skip(skip)
+    .limit(limit)
+    .then((posts) => res.status(200).json(posts));
 });
 
 const newPost = handleAsync(async (req, res, next) => {

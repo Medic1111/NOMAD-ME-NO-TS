@@ -49,8 +49,10 @@ During my Chingu.io Voyage I was matched with a team of originally 4 developers.
 
 ## What's next
 
+- Comments: Complete
+- Server pagination: Complete
+- Testing: In progress
 - Skelleton templates for heavy loads
-- Testing
 
 ## Running it
 

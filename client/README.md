@@ -1,10 +1,6 @@
-api jest/supertest
-mockdata setup with reference now
-
 FUTURE FEATURES:
 
-- Forgot Password
-- Maybe comments?
-- Maybe CSS Library?
-- Maybe Pagination?
-- Maybe Custom Tags?
+- Forgot Password - Complete
+- Maybe comments? - Complete
+- Maybe CSS Library? - Won't do
+- Maybe Pagination? - Complete SERVER side
