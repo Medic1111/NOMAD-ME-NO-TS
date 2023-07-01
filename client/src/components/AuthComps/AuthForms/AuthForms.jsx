@@ -45,6 +45,7 @@ const AuthForms = () => {
         </label>
         <input
           className={`${classes.input} input_standard`}
+          placeholder="testing"
           type="text"
           id="username"
           name="username"
@@ -64,6 +65,7 @@ const AuthForms = () => {
           value={authMgr.formData.password}
           onChange={(e) => authMgr.onInputChange(e)}
           required
+          placeholder="testing"
         />
         {/* <AuthFeed /> currently not being used, app_error handles it */}
         <InputSubmit
