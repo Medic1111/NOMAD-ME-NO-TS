@@ -1,4 +1,3 @@
-import classes from "./MoreLikeThis.module.css";
 import { useContext } from "react";
 import { postCtx } from "../../../features/posts-ctx";
 const MoreLikeThis = ({ label }) => {
@@ -8,7 +7,9 @@ const MoreLikeThis = ({ label }) => {
     <>
       {!postMgr.isFiltering && (
         <span
-          className={classes.span}
+          className={
+            "cursor-pointer underline text-rose-500 hover:text-rose-600"
+          }
           onClick={() => postMgr.onMoreLikeThis(label)}
         >
           more like this

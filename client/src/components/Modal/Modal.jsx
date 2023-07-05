@@ -1,4 +1,3 @@
-import classes from "./Modal.module.css";
 import { useContext } from "react";
 import AvatarForm from "../UserComps/AvatarForm/AvatarForm";
 import NewPostForm from "../CrudForms/NewPostForm/NewPostForm";
@@ -10,7 +9,7 @@ import SettingsPassForm from "../SettingsComps/SettingsPassForm/SettingsPassForm
 const Modal = () => {
   const uiMgr = useContext(uiCtx);
   return (
-    <article className={classes.article}>
+    <article className={"fixed w-full bg-slate-50 h-full top-0 left-0"}>
       {uiMgr.state.createPost && <NewPostForm />}
       {uiMgr.state.editAvatar && <AvatarForm />}
       {uiMgr.state.editPost && <EditPostForm />}

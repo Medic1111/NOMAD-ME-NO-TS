@@ -10,13 +10,14 @@ const Comments = ({ specPost, setSpecPost }) => {
 
   return (
     <CommentsWrapper>
+      <CommentsForm postId={postId} userId={userId} setSpecPost={setSpecPost} />
+
       <CommentList
         setSpecPost={setSpecPost}
         specPost={specPost}
         userId={userId}
         postId={postId}
       />
-      <CommentsForm postId={postId} userId={userId} setSpecPost={setSpecPost} />
     </CommentsWrapper>
   );
 };

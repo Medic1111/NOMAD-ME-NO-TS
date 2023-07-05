@@ -1,4 +1,3 @@
-import classes from "./NewPostForm.module.css";
 import "react-quill/dist/quill.snow.css";
 import { useState, useContext } from "react";
 import Label from "../../NavComps/Label/Label";
@@ -10,6 +9,7 @@ import { uploadCtx } from "../../../features/upload-ctx";
 import { userCtx } from "../../../features/user-ctx";
 import { postCtx } from "../../../features/posts-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
+import { formCom } from "../../../styles/form_common";
 
 const NewPostForm = () => {
   const postMgr = useContext(postCtx);
@@ -32,24 +32,23 @@ const NewPostForm = () => {
   };
 
   return (
-    <article className={`${classes.article} flex_col_center`}>
-      <ImgUpload />
-      <form
-        onSubmit={handleCreatePost}
-        className={`${classes.form} flex_col_center`}
-      >
+    <article className={`${formCom.container}`}>
+      <form onSubmit={handleCreatePost} className={formCom.form}>
+        <ImgUpload />
+
         <input
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className={`${classes.input} input_standard`}
+          className={formCom.input}
           type="text"
           placeholder="Title"
           maxLength={26}
           required
         />
+
         <ReactQuill
-          className={`${classes.textArea} input_standard`}
+          className={` h-48 w-full my-10`}
           theme="snow"
           value={content}
           onChange={setContent}
@@ -58,14 +57,10 @@ const NewPostForm = () => {
         <InputSubmit
           disabled={uploadMgr.url === "" ? true : false}
           text="post"
-          className={
-            uploadMgr.url === ""
-              ? `${classes.disabled} btn_standard`
-              : `${classes.submitBtn} btn_standard`
-          }
+          className={`${formCom.submitBtn}`}
         />
         <Button
-          className={`${classes.submitBtn} btn_standard`}
+          className={formCom.feedback}
           onClick={(e) => {
             e.preventDefault();
             uiMgr.dispatch({ type: "CLOSE" });

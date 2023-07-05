@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #f8fafc;
+}
+
 :root {
   --bg: #f7f7f7;
   --bg_accent: rgba(0, 128, 92, 0.324);
@@ -10,7 +18,7 @@
   --color_p_light: #f7f7f7;
   --color_link: rgb(118, 195, 173);
 }
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -114,4 +122,4 @@ body {
   html {
     font-size: 62.5%;
   }
-}
+} */

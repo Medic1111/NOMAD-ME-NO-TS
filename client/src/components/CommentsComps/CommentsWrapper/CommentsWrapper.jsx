@@ -1,7 +1,13 @@
-import classes from "./CommentsWrapper.module.css";
-
 const CommentsWrapper = ({ children }) => {
-  return <section className={classes.commentBox}>{children}</section>;
+  return (
+    <section
+      className={
+        " w-full h-auto overflow-auto flex items-center flex-col justify-between"
+      }
+    >
+      {children}
+    </section>
+  );
 };
 
 export default CommentsWrapper;

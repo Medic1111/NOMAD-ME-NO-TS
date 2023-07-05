@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import classes from "./CommentsDel.module.css";
 import axios from "axios";
 
 const CommentsDel = ({ obj, userId, specPost, postId, setSpecPost }) => {
@@ -19,15 +18,20 @@ const CommentsDel = ({ obj, userId, specPost, postId, setSpecPost }) => {
   };
 
   return (
-    <React.Fragment>
+    <div className="flex h-[10vh] items-center justify-end mx-10">
       {obj.by.id === userId || userId === specPost.author.id ? (
-        <span onClick={() => deleteComment(obj)} className={classes.del}>
-          x
+        <span
+          onClick={() => deleteComment(obj)}
+          className={
+            "cursor-pointer text-rose-500 underline hover:text-rose-600"
+          }
+        >
+          delete
         </span>
       ) : (
-        <span className={classes.del2}>x</span>
+        <span className={"hidden"}>x</span>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 
