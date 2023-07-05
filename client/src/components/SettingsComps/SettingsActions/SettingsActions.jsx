@@ -1,17 +1,16 @@
-import classes from "./SettingsActions.module.css";
 import Button from "../../common/Button/Button";
 import { useContext } from "react";
 import { uiCtx } from "../../../features/ui-ctx";
 import { useNavigate } from "react-router-dom";
-
+import { formCom } from "../../../styles/form_common";
 const SettingsActions = () => {
   const uiMgr = useContext(uiCtx);
   const nav = useNavigate();
   return (
-    <div className={`${classes.actionBox} flex_center`}>
+    <div className={"flex  items-start flex-col"}>
       <Button
         text={"delete account"}
-        className={`${classes.actionBtn} btn_standard`}
+        className={formCom.feedback}
         onClick={() => {
           nav("/posts");
           uiMgr.dispatch({ type: "DELETEACCOUNT" });
@@ -19,7 +18,7 @@ const SettingsActions = () => {
       />
       <Button
         text={"change password"}
-        className={`${classes.actionBtn} btn_standard`}
+        className={formCom.feedback}
         onClick={() => {
           nav("/posts");
           uiMgr.dispatch({ type: "EDITPASSWORD" });

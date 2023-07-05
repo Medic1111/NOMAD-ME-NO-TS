@@ -1,4 +1,4 @@
-import classes from "../NewPostForm/NewPostForm.module.css";
+// import classes from "../NewPostForm/NewPostForm.module.css";
 import React, { useState, useContext, useEffect } from "react";
 import Button from "../../common/Button/Button";
 import InputSubmit from "../../common/InputSubmit/InputSubmit";
@@ -9,6 +9,7 @@ import ReactQuill from "react-quill";
 import { uploadCtx } from "../../../features/upload-ctx";
 import { postCtx } from "../../../features/posts-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
+import { formCom } from "../../../styles/form_common";
 
 const EditPostForm = () => {
   const postMgr = useContext(postCtx);
@@ -52,24 +53,22 @@ const EditPostForm = () => {
   };
 
   return (
-    <article className={`${classes.article} flex_col_center`}>
-      <ImgUpload />
-      <form
-        onSubmit={handleEditPost}
-        className={`${classes.form} flex_col_center`}
-      >
+    <article className={formCom.container}>
+      <form onSubmit={handleEditPost} className={formCom.form}>
+        <ImgUpload />
+
         <input
           name="title"
           value={oldData.title}
           onChange={onInputChange}
-          className={`${classes.input} input_standard`}
+          className={formCom.input}
           type="text"
           placeholder="Title"
           maxLength={26}
           required
         />
         <ReactQuill
-          className={`${classes.textArea} input_standard`}
+          className={` h-48 w-full my-10`}
           theme="snow"
           value={content}
           onChange={setContent}
@@ -78,14 +77,10 @@ const EditPostForm = () => {
         <InputSubmit
           disabled={uploadMgr.isLoading ? true : false}
           text="Edit post"
-          className={
-            uploadMgr.isLoading
-              ? `${classes.disabled} btn_standard`
-              : `${classes.submitBtn} btn_standard`
-          }
+          className={formCom.submitBtn}
         />
         <Button
-          className={`${classes.submitBtn} btn_standard`}
+          className={formCom.feedback}
           onClick={(e) => {
             e.preventDefault();
             uiMgr.dispatch({ type: "CLOSE" });

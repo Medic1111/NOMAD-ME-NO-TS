@@ -1,4 +1,3 @@
-import classes from "./AvatarBox.module.css";
 import { useContext } from "react";
 import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
@@ -11,14 +10,10 @@ const AvatarBox = ({ username, avatar }) => {
   const uploadMgr = useContext(uploadCtx);
 
   return (
-    <div className={`${classes.avatarBox} flex_col_center`}>
+    <div className={"flex  gap-3 items-start justify-center "}>
       <img
         alt={`profile ${username}`}
-        className={
-          userMgr.currentUser.user.username === username
-            ? classes.userAvatar
-            : classes.avatar
-        }
+        className="cursor-pointer object-cover w-10 h-10 rounded-full"
         onClick={() => {
           if (userMgr.currentUser.user.username === username) {
             uiMgr.dispatch({ type: "EDITAVATAR" });
@@ -27,6 +22,8 @@ const AvatarBox = ({ username, avatar }) => {
         }}
         src={avatar}
       />
+      <h1 className="capitalize text-lg ">{username}</h1>
+
       {userMgr.currentUser.user.username === username && <SettingsIcon />}
     </div>
   );

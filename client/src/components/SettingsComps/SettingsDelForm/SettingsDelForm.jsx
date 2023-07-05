@@ -1,4 +1,3 @@
-import classes from "./SettingsDelForm.module.css";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button/Button";
@@ -7,7 +6,7 @@ import { uiCtx } from "../../../features/ui-ctx";
 import { userCtx } from "../../../features/user-ctx";
 import { authCtx } from "../../../features/auth-ctx";
 import { useAxios } from "../../../hooks/useAxios";
-
+import { formCom } from "../../../styles/form_common";
 const SettingsDelForm = () => {
   const nav = useNavigate();
   const uiMgr = useContext(uiCtx);
@@ -28,33 +27,31 @@ const SettingsDelForm = () => {
   };
 
   return (
-    <form
-      onSubmit={onDeleteAccount}
-      className={`${classes.form} flex_col_center`}
+    <div
+      className={`${formCom.container} bg-slate-50 w-[100vw] fixed top-0 h-screen mt-0 p-10 flex-col `}
     >
-      <p className={classes.warning}>ARE YOU SURE?</p>
-      <p className={classes.warning}>This action cannot be undone</p>
-      <input
-        className={`input_standard ${classes.input}`}
-        placeholder="enter password"
-        type={"password"}
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <InputSubmit
-        className={`${classes.submit} btn_standard`}
-        text={"delete account"}
-      />
-      <Button
-        className={`btn_standard ${classes.cancel}`}
-        text={"cancel"}
-        onClick={() => {
-          nav(`/users/${userMgr.currentUser.user._id}`);
-          uiMgr.dispatch({ type: "CLOSE" });
-        }}
-      />
-    </form>
+      <form onSubmit={onDeleteAccount} className={formCom.form}>
+        <p className={formCom.title}>ARE YOU SURE?</p>
+        <p className={formCom.title}>This action cannot be undone</p>
+        <input
+          className={formCom.input}
+          placeholder="enter password"
+          type={"password"}
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <InputSubmit className={formCom.submitBtn} text={"delete account"} />
+        <Button
+          className={formCom.submitBtn}
+          text={"cancel"}
+          onClick={() => {
+            nav(`/users/${userMgr.currentUser.user._id}`);
+            uiMgr.dispatch({ type: "CLOSE" });
+          }}
+        />
+      </form>
+    </div>
   );
 };
 

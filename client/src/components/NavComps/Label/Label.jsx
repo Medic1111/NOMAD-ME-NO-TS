@@ -1,4 +1,3 @@
-import classes from "./Label.module.css";
 import React from "react";
 
 const rateList = [
@@ -21,7 +20,11 @@ const Label = ({ setLabel, label }) => {
         return (
           <button
             key={`BUTTON_${index}`}
-            className={obj.selected ? classes.labelSelection : classes.label}
+            className={
+              obj.selected
+                ? "bg-rose-500 px-5 my-5 py-2"
+                : "bg-slate-200 px-5 py-2 my-5"
+            }
             onClick={(e) => {
               e.preventDefault();
               rateList.forEach((obj) => (obj.selected = false));

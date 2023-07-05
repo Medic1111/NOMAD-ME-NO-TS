@@ -4,10 +4,10 @@ import HeroArticle from "../HeroArticle/HeroArticle";
 
 const Hero = () => {
   return (
-    <React.Fragment>
+    <div className="w-screen h-auto">
       <HeroParallax />
       <HeroArticle />
-    </React.Fragment>
+    </div>
   );
 };
 

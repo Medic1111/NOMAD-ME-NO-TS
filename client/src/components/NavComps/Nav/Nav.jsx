@@ -1,4 +1,3 @@
-import classes from "./Nav.module.css";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authCtx } from "../../../features/auth-ctx";
@@ -9,20 +8,25 @@ const Nav = () => {
   const userMgr = useContext(userCtx);
 
   return (
-    <nav className={`${classes.nav} flex_center`}>
+    <nav
+      className={` bg-rose-500 h-[7.5vh] w-full flex items-center justify-center list-none gap-5`}
+    >
       {authMgr.isAuth ? (
         <>
-          <Link className={`${classes.link} link_standard`} to="/posts">
+          <Link
+            className={"text-slate-950 hover:text-slate-50 cursor-pointer"}
+            to="/posts"
+          >
             Posts
           </Link>
           <Link
-            className={`${classes.link} link_standard`}
+            className={"text-slate-950 hover:text-slate-50 cursor-pointer"}
             to={`/users/${userMgr.currentUser.user._id}`}
           >
             Profile
           </Link>
           <li
-            className={`${classes.link} link_standard`}
+            className={"text-slate-950 hover:text-slate-50 cursor-pointer"}
             onClick={() => authMgr.logoutHandler()}
           >
             Logout
@@ -32,13 +36,13 @@ const Nav = () => {
         <>
           <li
             onClick={() => authMgr.onShowForm("register")}
-            className={`${classes.link} link_standard`}
+            className={"text-slate-950 hover:text-slate-50 cursor-pointer"}
           >
             Sign Up
           </li>
           <li
             onClick={() => authMgr.onShowForm("login")}
-            className={`${classes.link} link_standard`}
+            className={"text-slate-950 hover:text-slate-50 cursor-pointer"}
           >
             Login
           </li>

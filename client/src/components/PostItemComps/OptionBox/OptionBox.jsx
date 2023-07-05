@@ -1,4 +1,3 @@
-import classes from "./OptionBox.module.css";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { postCtx } from "../../../features/posts-ctx";
@@ -12,9 +11,11 @@ const OptionBox = ({ username, _id }) => {
   const nav = useNavigate();
 
   return (
-    <div className={`${classes.userOptions} flex_center`}>
+    <div className={`flex items-center justify-center gap-5`}>
       <span
-        className={classes.span}
+        className={
+          "cursor-pointer text-green-500 hover:text-green-600 underline"
+        }
         onClick={() => {
           postMgr.onDelPost(username, _id);
         }}
@@ -22,7 +23,9 @@ const OptionBox = ({ username, _id }) => {
         delete
       </span>
       <span
-        className={classes.span}
+        className={
+          "cursor-pointer text-green-500 hover:text-green-600 underline"
+        }
         onClick={() => {
           postMgr.setPostIdToEdit(_id);
           uiMgr.dispatch({ type: "EDITPOST" });

@@ -1,4 +1,3 @@
-import classes from "./LabelBadge.module.css";
 import { useContext, useEffect, useState } from "react";
 import { postCtx } from "../../../features/posts-ctx";
 
@@ -11,25 +10,25 @@ const LabelBadge = () => {
     const setBackground = () => {
       switch (postMgr.labelToDisplay) {
         case "none": {
-          return setBgColor("#dfd3c3");
+          return setBgColor("#0f172a");
         }
         case "green": {
-          return setBgColor("#cbf078");
+          return setBgColor("#22c55e");
         }
         case "blue": {
-          return setBgColor("#66bfbf");
+          return setBgColor("#0ea5e9");
         }
         case "orange": {
-          return setBgColor("#ff9a3c");
+          return setBgColor("#f97316");
         }
         case "brown": {
-          return setBgColor("#83580b");
+          return setBgColor("#92400e");
         }
         case "gray": {
-          return setBgColor("#596e79");
+          return setBgColor("#6b7280");
         }
         default: {
-          return setBgColor("#dfd3c3");
+          return setBgColor("#0f172a");
         }
       }
     };
@@ -38,8 +37,8 @@ const LabelBadge = () => {
 
   return (
     <span
-      style={{ backgroundColor: bgColor }}
-      className={`${classes.labelBadge} material-symbols-outlined`}
+      style={{ color: bgColor }}
+      className={`text-5xl cursor-pointer  material-symbols-outlined`}
       onClick={() => {
         postMgr.setIsFiltering(false);
         postMgr.fetchPostApi();

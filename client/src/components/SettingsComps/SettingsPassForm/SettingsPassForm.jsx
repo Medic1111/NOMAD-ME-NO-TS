@@ -1,4 +1,3 @@
-import classes from "./SettingsPassForm.module.css";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../common/Button/Button";
@@ -8,6 +7,7 @@ import { userCtx } from "../../../features/user-ctx";
 import { authCtx } from "../../../features/auth-ctx";
 import { useAxios } from "../../../hooks/useAxios";
 import { app_error } from "../../../utils/app_error";
+import { formCom } from "../../../styles/form_common";
 
 const SettingsPassForm = () => {
   const nav = useNavigate();
@@ -45,51 +45,49 @@ const SettingsPassForm = () => {
   };
 
   return (
-    <form
-      onSubmit={onChangePassword}
-      className={`${classes.form} flex_col_center`}
+    <div
+      className={`${formCom.container} bg-slate-50 w-[100vw] fixed top-0 h-screen mt-0 p-10 flex-col `}
     >
-      <p className={classes.warning}>Change Password</p>
-      <input
-        className={`input_standard ${classes.input}`}
-        placeholder="enter current password"
-        type={"password"}
-        required
-        value={inputData.currentPassword}
-        name="currentPassword"
-        onChange={handleInputChange}
-      />
-      <input
-        className={`input_standard ${classes.input}`}
-        placeholder="enter new password"
-        type={"password"}
-        required
-        value={inputData.newPassword}
-        name="newPassword"
-        onChange={handleInputChange}
-      />
-      <input
-        className={`input_standard ${classes.input}`}
-        placeholder="confirm new password"
-        type={"password"}
-        required
-        value={inputData.confirmPassword}
-        name="confirmPassword"
-        onChange={handleInputChange}
-      />
-      <InputSubmit
-        className={`${classes.submit} btn_standard`}
-        text={"change password"}
-      />
-      <Button
-        className={`btn_standard ${classes.cancel}`}
-        text={"cancel"}
-        onClick={() => {
-          nav(`/users/${userMgr.currentUser.user._id}`);
-          uiMgr.dispatch({ type: "CLOSE" });
-        }}
-      />
-    </form>
+      <form onSubmit={onChangePassword} className={formCom.form}>
+        <p className={formCom.title}>Change Password</p>
+        <input
+          className={formCom.input}
+          placeholder="enter current password"
+          type={"password"}
+          required
+          value={inputData.currentPassword}
+          name="currentPassword"
+          onChange={handleInputChange}
+        />
+        <input
+          className={formCom.input}
+          placeholder="enter new password"
+          type={"password"}
+          required
+          value={inputData.newPassword}
+          name="newPassword"
+          onChange={handleInputChange}
+        />
+        <input
+          className={formCom.input}
+          placeholder="confirm new password"
+          type={"password"}
+          required
+          value={inputData.confirmPassword}
+          name="confirmPassword"
+          onChange={handleInputChange}
+        />
+        <InputSubmit className={formCom.submitBtn} text={"change password"} />
+        <Button
+          className={formCom.submitBtn}
+          text={"cancel"}
+          onClick={() => {
+            nav(`/users/${userMgr.currentUser.user._id}`);
+            uiMgr.dispatch({ type: "CLOSE" });
+          }}
+        />
+      </form>
+    </div>
   );
 };
 

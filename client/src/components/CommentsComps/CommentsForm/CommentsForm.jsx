@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import classes from "./CommentsForm.module.css";
 import axios from "axios";
 
 const CommentsForm = ({ postId, userId, setSpecPost }) => {
@@ -19,17 +18,24 @@ const CommentsForm = ({ postId, userId, setSpecPost }) => {
   };
 
   return (
-    <React.Fragment>
+    <div className="w-full flex my-5">
       <input
         onChange={(e) => setContent(e.target.value)}
         value={content}
         type={"text"}
-        className={classes.input}
+        className={
+          "h-[5vh] focus-on rounded-lg text-lg  w-full  px-[0.25em] outline-green-500"
+        }
       />
-      <button className={classes.btn} onClick={() => commentApi()}>
+      <button
+        className={
+          "h-[5vh] rounded-lg bg-green-400 cursor-pointer hover:bg-rose-500 text-lg w-2/5  px-[0.25em] outline-green-500"
+        }
+        onClick={() => commentApi()}
+      >
         comment
       </button>
-    </React.Fragment>
+    </div>
   );
 };
 

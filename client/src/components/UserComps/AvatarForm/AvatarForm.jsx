@@ -1,4 +1,3 @@
-import classes from "./AvatarForm.module.css";
 import React, { useContext } from "react";
 import ImgUpload from "../../ImgUpload/ImgUpload";
 import Button from "../../common/Button/Button";
@@ -6,6 +5,7 @@ import InputSubmit from "../../common/InputSubmit/InputSubmit";
 import { uiCtx } from "../../../features/ui-ctx";
 import { userCtx } from "../../../features/user-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
+import { formCom } from "../../../styles/form_common";
 
 const AvatarForm = () => {
   const userMgr = useContext(userCtx);
@@ -13,24 +13,24 @@ const AvatarForm = () => {
   const uploadMgr = useContext(uploadCtx);
 
   return (
-    <article className={classes.article}>
-      <h3 className={classes.h3}>Edit Profile Picture</h3>
-      <ImgUpload />
-      <form
-        onSubmit={userMgr.onUpdateAvatar}
-        className={`${classes.form} flex_col_center`}
-      >
+    <article
+      className={`${formCom.container} bg-slate-50 w-[100vw] fixed top-0 h-screen mt-0 p-10 flex-col `}
+    >
+      <h3 className={formCom.title}>Edit Profile Picture</h3>
+      <form onSubmit={userMgr.onUpdateAvatar} className={formCom.form}>
+        <ImgUpload />
+
         <InputSubmit
           disabled={uploadMgr.url === "" ? true : false}
           className={
             uploadMgr.url === ""
-              ? `${classes.disabled} btn_standard`
-              : `${classes.submitBtn} btn_standard`
+              ? `${formCom.submitBtn}`
+              : `${formCom.submitBtn}`
           }
           text={"update"}
         />
         <Button
-          className={`${classes.inputBtn} btn_standard`}
+          className={formCom.submitBtn}
           text={"cancel"}
           onClick={(e) => {
             e.preventDefault();

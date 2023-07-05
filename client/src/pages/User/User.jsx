@@ -1,4 +1,3 @@
-import classes from "./User.module.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAxios } from "../../hooks/useAxios";
@@ -24,13 +23,17 @@ const User = () => {
   }, [userId]);
 
   return (
-    <main className={`${classes.main} flex_col_center`}>
+    <main className={"w-full h-full flex flex-col items-center justify-start"}>
       <UserBanner
         username={user.user.username}
         avatar={user.user.avatar}
         postLength={user.user.posts.length || 0}
       />
-      <ul className={`${classes.ul} flex_col_center`}>
+      <ul
+        className={
+          " w-full h-full flex flex-col items-center justify-start p-5 gap-10"
+        }
+      >
         {user.user.posts.map((obj, index) => {
           return (
             <React.Suspense key={`${obj.id}_${index}`} fallback={<Spinner />}>
