@@ -1,7 +1,7 @@
 .parallax {
-  height: 85vh;
+  height: 92.5vh;
   width: 100%;
-  background-image: url("../../../assets/hero.jpg");
+  background-image: url("../../../assets/hero2.jpg");
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
