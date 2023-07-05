@@ -5,6 +5,7 @@ import MoreLikeThis from "../MoreLikeThis/MoreLikeThis";
 import PostItemBanner from "../PostItemBanner/PostItemBanner";
 import parse from "html-react-parser";
 import { userCtx } from "../../../features/user-ctx";
+import { postCom } from "../../../styles/post_comm";
 
 const PostItem = ({ obj, profile }) => {
   const nav = useNavigate();

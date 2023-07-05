@@ -8,7 +8,7 @@ const HeroParallax = () => {
       <Zoom>
         <h1
           className={
-            "w-full  text-center text-slate-800  text-8xl flex items-center justify-center"
+            "w-full  text-center text-slate-50  text-8xl flex items-center justify-center"
           }
         >
           NOMAD ME
