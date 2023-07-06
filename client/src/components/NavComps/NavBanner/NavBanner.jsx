@@ -14,7 +14,7 @@ const NavBanner = () => {
   return (
     <aside
       className={
-        "flex justify-between items-center h-12 bg-slate-50 w-full px-5"
+        "flex bg-green-400 justify-between items-center h-12  w-full px-5"
       }
     >
       <p className={"text-slate-800 capitalize"}>
