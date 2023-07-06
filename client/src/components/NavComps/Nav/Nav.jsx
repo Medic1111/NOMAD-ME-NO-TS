@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authCtx } from "../../../features/auth-ctx";
 import { userCtx } from "../../../features/user-ctx";
+import { CiSettings } from "react-icons/ci";
 
 const Nav = () => {
   const authMgr = useContext(authCtx);
@@ -25,12 +26,20 @@ const Nav = () => {
           >
             Profile
           </Link>
+
           <li
             className={"text-slate-800 hover:text-green-500 cursor-pointer"}
             onClick={() => authMgr.logoutHandler()}
           >
             Logout
           </li>
+          {/* <Link
+            className={
+              "text-2xl text-slate-800 hover:text-green-500 cursor-pointer"
+            }
+          >
+            <CiSettings />
+          </Link> */}
         </>
       ) : (
         <>

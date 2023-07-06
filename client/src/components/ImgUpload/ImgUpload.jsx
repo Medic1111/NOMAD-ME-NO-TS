@@ -1,6 +1,7 @@
 import classes from "./ImgUpload.module.css";
 import React, { useContext } from "react";
 import { uploadCtx } from "../../features/upload-ctx";
+import { AiOutlineCamera } from "react-icons/ai";
 
 const ImgUpload = ({ formTitle }) => {
   const uploadMgr = useContext(uploadCtx);
@@ -11,7 +12,7 @@ const ImgUpload = ({ formTitle }) => {
         {formTitle ? formTitle : null}
         <span className={`${classes.camera} material-symbols-outlined`}>
           {uploadMgr.url === "" ? (
-            "add_a_photo"
+            <AiOutlineCamera />
           ) : (
             <img
               className={classes.preview}

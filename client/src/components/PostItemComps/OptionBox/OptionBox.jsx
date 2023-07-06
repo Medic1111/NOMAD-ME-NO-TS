@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { postCtx } from "../../../features/posts-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
+import { AiOutlineDelete } from "react-icons/ai";
+import { AiOutlineEdit } from "react-icons/ai";
 
 const OptionBox = ({ username, _id }) => {
   const uiMgr = useContext(uiCtx);
@@ -14,17 +16,18 @@ const OptionBox = ({ username, _id }) => {
     <div className={`flex items-center justify-center gap-5`}>
       <span
         className={
-          "cursor-pointer text-green-500 hover:text-green-600 underline"
+          "cursor-pointer text-xl text-green-500 hover:text-green-600 underline"
         }
         onClick={() => {
           postMgr.onDelPost(username, _id);
         }}
       >
-        delete
+        {/* delete */}
+        <AiOutlineDelete />
       </span>
       <span
         className={
-          "cursor-pointer text-green-500 hover:text-green-600 underline"
+          "cursor-pointer text-xl text-green-500 hover:text-green-600 underline"
         }
         onClick={() => {
           postMgr.setPostIdToEdit(_id);
@@ -33,7 +36,8 @@ const OptionBox = ({ username, _id }) => {
           uploadMgr.setUrl("");
         }}
       >
-        edit
+        {/* edit */}
+        <AiOutlineEdit />
       </span>
     </div>
   );

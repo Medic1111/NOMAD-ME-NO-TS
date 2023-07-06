@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { postCtx } from "../../../features/posts-ctx";
 import { userCtx } from "../../../features/user-ctx";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 const Vote = ({ obj }) => {
   const postMgr = useContext(postCtx);
@@ -20,7 +21,7 @@ const Vote = ({ obj }) => {
           postMgr.onUpVote(obj._id);
         }}
       >
-        arrow_upward
+        <AiOutlineArrowUp />
       </span>
       <span>{obj.voteCount}</span>
     </div>
