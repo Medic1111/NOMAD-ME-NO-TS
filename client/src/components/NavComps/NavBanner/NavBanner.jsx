@@ -28,7 +28,7 @@ const NavBanner = () => {
             uiMgr.dispatch({ type: "CREATEPOST" });
             uploadMgr.setUrl("");
           }}
-          className={`text-2xl cursor-pointer material-symbols-outlined`}
+          className={`text-2xl cursor-pointer material-symbols-outlined hover:text-rose-600`}
           style={{ cursor: "pointer" }}
         >
           <IoMdCreate />
