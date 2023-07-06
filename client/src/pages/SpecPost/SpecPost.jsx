@@ -9,6 +9,7 @@ import { userCtx } from "../../features/user-ctx";
 import parse from "html-react-parser";
 import Comments from "../../components/CommentsComps/Comments/Comments";
 import { postCom } from "../../styles/post_comm";
+import { scrollToTop } from "../../utils/scroll_top";
 
 const SpecPost = () => {
   const userMgr = useContext(userCtx);
@@ -23,6 +24,7 @@ const SpecPost = () => {
 
   useEffect(() => {
     fetchData();
+    scrollToTop();
   }, [postId]);
 
   return (
