@@ -9,6 +9,7 @@ const UserProvider = ({ children }) => {
   const uploadMgr = useContext(uploadCtx);
   const [currentUser, setCurrentUser] = useState({ username: "" });
   const { callApi } = useAxios();
+  const [toggleActions, setToggleActions] = useState(false);
 
   const onUpdateAvatar = async () => {
     await callApi("PATCH", `/api/v1/users/${currentUser.user.id}`, {
@@ -22,6 +23,8 @@ const UserProvider = ({ children }) => {
         currentUser,
         setCurrentUser,
         onUpdateAvatar,
+        toggleActions,
+        setToggleActions,
       }}
     >
       {children}

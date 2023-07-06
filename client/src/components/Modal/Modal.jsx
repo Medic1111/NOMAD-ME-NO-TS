@@ -1,13 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AvatarForm from "../UserComps/AvatarForm/AvatarForm";
 import NewPostForm from "../CrudForms/NewPostForm/NewPostForm";
 import EditPostForm from "../CrudForms/EditPostForm/EditPostForm";
 import { uiCtx } from "../../features/ui-ctx";
 import SettingsDelForm from "../SettingsComps/SettingsDelForm/SettingsDelForm";
 import SettingsPassForm from "../SettingsComps/SettingsPassForm/SettingsPassForm";
+import { scrollToTop } from "../../utils/scroll_top";
 
 const Modal = () => {
   const uiMgr = useContext(uiCtx);
+
+  useEffect(() => {
+    scrollToTop();
+  }, []);
+
   return (
     <article className={"fixed w-full bg-slate-50 h-full top-0 left-0"}>
       {uiMgr.state.createPost && <NewPostForm />}

@@ -23,7 +23,7 @@ const PostItem = ({ obj, profile }) => {
       <img
         alt={`${obj.title}`}
         onClick={() => nav(`/posts/${obj.id}`)}
-        className={"cursor-pointer object-cover max-h-1/2 h-1/2 w-full"}
+        className={"cursor-pointer object-cover  h-1/2 max-h-[50vh] w-full"}
         src={obj.url}
       />
       <h4

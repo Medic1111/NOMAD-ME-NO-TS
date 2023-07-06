@@ -1,21 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
 import SettingsActions from "../SettingsActions/SettingsActions";
+import { userCtx } from "../../../features/user-ctx";
 
 const SettingsIcon = () => {
-  const [toggleAction, setToggleAction] = useState(false);
-
+  const { toggleActions } = useContext(userCtx);
   return (
     <div className="flex flex-col items-start justify-start">
-      <span
-        style={{ cursor: "pointer", fontSize: "2em" }}
-        className="material-symbols-outlined"
-        onClick={() => {
-          setToggleAction((prev) => !prev);
-        }}
-      >
-        settings
-      </span>
-      {toggleAction && <SettingsActions />}
+      {toggleActions && <SettingsActions />}
     </div>
   );
 };
