@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { postCtx } from "../../../features/posts-ctx";
+import { BsToggleOff } from "react-icons/bs";
+import { BsToggleOn } from "react-icons/bs";
 
 const LabelBadge = () => {
   const postMgr = useContext(postCtx);
-  const [content, setContent] = useState("toggle_on");
+  const [content, setContent] = useState(<BsToggleOn />);
   const [bgColor, setBgColor] = useState("");
 
   useEffect(() => {
@@ -38,13 +40,13 @@ const LabelBadge = () => {
   return (
     <span
       style={{ color: bgColor }}
-      className={`text-5xl cursor-pointer  material-symbols-outlined`}
+      className={`text-3xl cursor-pointer`}
       onClick={() => {
         postMgr.setIsFiltering(false);
         postMgr.fetchPostApi();
       }}
-      onMouseEnter={() => setContent("toggle_off")}
-      onMouseLeave={() => setContent("toggle_on")}
+      onMouseEnter={() => setContent(<BsToggleOff />)}
+      onMouseLeave={() => setContent(<BsToggleOn />)}
     >
       {content}
     </span>
