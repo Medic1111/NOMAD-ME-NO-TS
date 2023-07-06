@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
-import SettingsIcon from "../../SettingsComps/SettingsIcon/SettingsIcon";
 
 const AvatarBox = ({ username, avatar }) => {
   const userMgr = useContext(userCtx);
@@ -23,8 +22,6 @@ const AvatarBox = ({ username, avatar }) => {
         src={avatar}
       />
       <h1 className="capitalize text-lg ">{username}</h1>
-
-      {userMgr.currentUser.user.username === username && <SettingsIcon />}
     </div>
   );
 };

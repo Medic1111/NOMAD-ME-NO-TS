@@ -4,6 +4,7 @@ import { postCtx } from "../../../features/posts-ctx";
 import { userCtx } from "../../../features/user-ctx";
 import { uiCtx } from "../../../features/ui-ctx";
 import { uploadCtx } from "../../../features/upload-ctx";
+import { IoMdCreate } from "react-icons/io";
 
 const NavBanner = () => {
   const userMgr = useContext(userCtx);
@@ -27,10 +28,10 @@ const NavBanner = () => {
             uiMgr.dispatch({ type: "CREATEPOST" });
             uploadMgr.setUrl("");
           }}
-          className={`text-3xl cursor-pointer material-symbols-outlined`}
+          className={`text-2xl cursor-pointer material-symbols-outlined`}
           style={{ cursor: "pointer" }}
         >
-          add_circle
+          <IoMdCreate />
         </span>
       </div>
     </aside>
