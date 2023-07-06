@@ -9,7 +9,7 @@ const UserBanner = ({ username, avatar, postLength }) => {
   return (
     <>
       {uiMgr.state.editAvatar && <AvatarForm />}
-      <div className="flex w-full items-start justify-between h-32 py-5 px-1 sm:px-10">
+      <div className="flex bg-green-300 w-full items-start justify-between  py-5 px-1 sm:px-10">
         <div className="flex items-start gap-5">
           <AvatarBox username={username} avatar={avatar} />
         </div>
