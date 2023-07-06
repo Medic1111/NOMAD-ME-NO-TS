@@ -32,7 +32,7 @@ const SpecPost = () => {
         <img
           alt={postMgr.specPost.title}
           style={{ cursor: "default" }}
-          className={postCom.img}
+          className={`${postCom.img} `}
           src={postMgr.specPost.url}
         />
         <h4 style={{ cursor: "default" }} className={postCom.title}>
