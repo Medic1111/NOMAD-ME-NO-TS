@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import axios from "axios";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const CommentsDel = ({ obj, userId, specPost, postId, setSpecPost }) => {
   const deleteComment = async (obj) => {
@@ -18,21 +19,23 @@ const CommentsDel = ({ obj, userId, specPost, postId, setSpecPost }) => {
   };
 
   return (
-    <div className="flex h-[10vh] items-center justify-end mx-10">
+    <div className="flex w-full justify-end align-end">
       {obj.by.id === userId || userId === specPost.author.id ? (
         <span
           onClick={() => deleteComment(obj)}
           className={
-            "cursor-pointer text-rose-500 underline hover:text-rose-600"
+            "cursor-pointer text-2xl text-green-500 underline hover:text-rose-600"
           }
         >
-          delete
+          <AiOutlineDelete />
         </span>
-      ) : (
-        <span className={"hidden"}>x</span>
-      )}
+      ) : null}
     </div>
   );
 };
+
+{
+  /* <span className={"hidden"}>x</span> */
+}
 
 export default CommentsDel;
