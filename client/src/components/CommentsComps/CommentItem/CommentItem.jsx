@@ -14,16 +14,15 @@ const CommentItem = ({ obj, userId, postId, setSpecPost, specPost }) => {
         />
         <p>{obj.by.username}</p>
       </div>
-      <div className={""}>
-        <p className={"px-12"}>{obj.content}</p>
-        <CommentsDel
-          obj={obj}
-          setSpecPost={setSpecPost}
-          specPost={specPost}
-          userId={userId}
-          postId={postId}
-        />
-      </div>
+
+      <p className={"px-12 pb-5"}>{obj.content}</p>
+      <CommentsDel
+        obj={obj}
+        setSpecPost={setSpecPost}
+        specPost={specPost}
+        userId={userId}
+        postId={postId}
+      />
     </li>
   );
 };
