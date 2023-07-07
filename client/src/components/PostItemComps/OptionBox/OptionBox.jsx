@@ -22,7 +22,6 @@ const OptionBox = ({ username, _id }) => {
           postMgr.onDelPost(username, _id);
         }}
       >
-        {/* delete */}
         <AiOutlineDelete />
       </span>
       <span

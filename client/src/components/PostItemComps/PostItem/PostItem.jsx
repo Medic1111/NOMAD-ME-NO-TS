@@ -5,7 +5,6 @@ import MoreLikeThis from "../MoreLikeThis/MoreLikeThis";
 import PostItemBanner from "../PostItemBanner/PostItemBanner";
 import parse from "html-react-parser";
 import { userCtx } from "../../../features/user-ctx";
-import { postCom } from "../../../styles/post_comm";
 
 const PostItem = ({ obj, profile }) => {
   const nav = useNavigate();
@@ -16,7 +15,7 @@ const PostItem = ({ obj, profile }) => {
       className={
         profile
           ? " h-[36em] w-full sm:w-4/5 h-auto flex flex-col gap-5 bg-slate-100 items-center justify-between py-5 overflow-auto"
-          : " h-[36em] w-full md:w-1/3 lg:w-1/4 h-auto flex flex-col gap-5 bg-slate-100 items-center justify-between py-5 overflow-auto"
+          : " h-[36em] w-full md:w-1/3  h-auto flex flex-col gap-5 bg-slate-100 items-center justify-between py-5 overflow-auto"
       }
     >
       {profile || <PostItemBanner obj={obj} />}
